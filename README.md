@@ -176,6 +176,8 @@ python -m evaluation.regression
 <img width="886" height="572" alt="image" src="https://github.com/user-attachments/assets/6935a817-9045-42ee-a811-a226f23b0238" />
 <img width="882" height="346" alt="image" src="https://github.com/user-attachments/assets/c679f80a-e9e8-4a33-a3f0-1f54b28893d9" />
 <img width="877" height="341" alt="image" src="https://github.com/user-attachments/assets/a5cf985c-fcce-4289-a043-c5d0cf1c05f8" />
+<img width="876" height="350" alt="image" src="https://github.com/user-attachments/assets/2bec1e32-ba80-4e54-8121-1b3e8c58f2b9" />
+
 
 
 ## Author
