@@ -23,7 +23,7 @@ The platform enables systematic benchmarking of RAG pipelines by measuring retri
 * Regression testing between runs
 
 ## Architecture
-
+```
 PDF Documents
 ↓
 Document Loader
@@ -41,6 +41,30 @@ LLM Generator
 Evaluation Pipeline
 ↓
 Experiment Reports
+```
+## RAG Architecture
+```
+PDF
+↓
+Loader
+↓
+Documents
+↓
+Chunker
+↓
+Chunks
+↓
+Sentence Transformer
+↓
+Embeddings
+↓
+ChromaDB
+↓
+Retriever
+↓
+Relevant Chunks
+```
+<img width="295" height="215" alt="image" src="https://github.com/user-attachments/assets/c96c63a3-7453-4d6e-836d-4a8e732bdae7" />
 
 ## Evaluation Metrics
 
