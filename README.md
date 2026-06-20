@@ -167,9 +167,15 @@ python -m evaluation.regression
 
 ## Project folder structure
 <img width="305" height="533" alt="image" src="https://github.com/user-attachments/assets/a6fac042-5eb5-495f-b0ae-f09c24eb0d4b" />  
-<img width="297" height="842" alt="image" src="https://github.com/user-attachments/assets/fdae45d5-85cf-484a-b288-984165be3b6f" />  <img width="308" height="856" alt="image" src="https://github.com/user-attachments/assets/afa9bd2d-0b80-42be-b78d-6bbec0d03058" />
+<img width="297" height="842" alt="image" src="https://github.com/user-attachments/assets/fdae45d5-85cf-484a-b288-984165be3b6f" />  
+<img width="308" height="856" alt="image" src="https://github.com/user-attachments/assets/afa9bd2d-0b80-42be-b78d-6bbec0d03058" />
 
 
+## output
+<img width="872" height="682" alt="image" src="https://github.com/user-attachments/assets/c7978905-348e-4665-b4e9-ffac7648545b" />
+<img width="886" height="572" alt="image" src="https://github.com/user-attachments/assets/6935a817-9045-42ee-a811-a226f23b0238" />
+<img width="882" height="346" alt="image" src="https://github.com/user-attachments/assets/c679f80a-e9e8-4a33-a3f0-1f54b28893d9" />
+<img width="877" height="341" alt="image" src="https://github.com/user-attachments/assets/a5cf985c-fcce-4289-a043-c5d0cf1c05f8" />
 
 
 ## Author
