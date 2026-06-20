@@ -1,0 +1,166 @@
+[
+{
+"question": "What is the main innovation proposed in the Transformer paper?",
+"ground_truth": "The Transformer is a sequence transduction architecture based entirely on attention mechanisms, eliminating recurrence and convolutions."
+},
+{
+"question": "What problem with recurrent neural networks does the Transformer aim to solve?",
+"ground_truth": "RNNs require sequential computation, limiting parallelization and increasing training time. The Transformer removes this constraint using attention."
+},
+{
+"question": "What is self-attention?",
+"ground_truth": "Self-attention is an attention mechanism that relates different positions within a single sequence to compute a representation of that sequence."
+},
+{
+"question": "How many encoder layers are used in the base Transformer model?",
+"ground_truth": "The encoder consists of 6 identical layers."
+},
+{
+"question": "How many decoder layers are used in the base Transformer model?",
+"ground_truth": "The decoder consists of 6 identical layers."
+},
+{
+"question": "What are the two sub-layers in each encoder layer?",
+"ground_truth": "Multi-head self-attention and a position-wise feed-forward network."
+},
+{
+"question": "What is Scaled Dot-Product Attention?",
+"ground_truth": "It computes attention weights by taking the dot product of queries and keys, scaling by sqrt(dk), applying softmax, and weighting values."
+},
+{
+"question": "Why is scaling by sqrt(dk) used in attention?",
+"ground_truth": "To prevent large dot-product values from pushing softmax into regions with extremely small gradients."
+},
+{
+"question": "What is Multi-Head Attention?",
+"ground_truth": "Multi-Head Attention performs multiple attention operations in parallel using different learned projections of queries, keys, and values."
+},
+{
+"question": "How many attention heads are used in the base Transformer?",
+"ground_truth": "8 attention heads."
+},
+{
+"question": "What is the value of d_model in the base Transformer?",
+"ground_truth": "512."
+},
+{
+"question": "What is the dimensionality of the feed-forward network hidden layer?",
+"ground_truth": "2048."
+},
+{
+"question": "Why are positional encodings necessary in the Transformer?",
+"ground_truth": "Because the Transformer contains no recurrence or convolution and therefore needs explicit position information."
+},
+{
+"question": "What type of positional encoding is used in the paper?",
+"ground_truth": "Sinusoidal positional encodings based on sine and cosine functions of different frequencies."
+},
+{
+"question": "How does the decoder prevent attending to future tokens?",
+"ground_truth": "By masking future positions in the self-attention mechanism."
+},
+{
+"question": "What optimizer was used to train the Transformer?",
+"ground_truth": "Adam optimizer."
+},
+{
+"question": "What BLEU score did the Transformer Big model achieve on WMT 2014 English-to-German translation?",
+"ground_truth": "28.4 BLEU."
+},
+{
+"question": "What BLEU score did the Transformer Big model achieve on WMT 2014 English-to-French translation?",
+"ground_truth": "41.0 BLEU."
+},
+{
+"question": "Why is self-attention advantageous for long-range dependencies?",
+"ground_truth": "Because any two positions can interact directly with a path length of O(1), making long-range dependencies easier to learn."
+},
+{
+"question": "What conclusion do the authors draw about the Transformer architecture?",
+"ground_truth": "The Transformer achieves state-of-the-art translation results while training faster and relying entirely on attention mechanisms."
+},
+
+
+{
+"question": "What is the main goal of Retrieval-Augmented Generation (RAG)?",
+"ground_truth": "RAG combines parametric memory from a pre-trained seq2seq model with non-parametric memory from a retrieval system to improve knowledge-intensive NLP tasks."
+},
+{
+"question": "What are the two main components of a RAG model?",
+"ground_truth": "A neural retriever and a sequence-to-sequence generator."
+},
+{
+"question": "What model is used as the retriever in RAG?",
+"ground_truth": "Dense Passage Retriever (DPR)."
+},
+{
+"question": "What model is used as the generator in RAG?",
+"ground_truth": "BART-large."
+},
+{
+"question": "What serves as the non-parametric memory in RAG?",
+"ground_truth": "A dense vector index of Wikipedia documents."
+},
+{
+"question": "What serves as the parametric memory in RAG?",
+"ground_truth": "The parameters of the BART sequence-to-sequence model."
+},
+{
+"question": "What is the difference between RAG-Sequence and RAG-Token?",
+"ground_truth": "RAG-Sequence uses the same retrieved document for the entire generated sequence, while RAG-Token can use different retrieved documents for different generated tokens."
+},
+{
+"question": "How does RAG retrieve relevant documents?",
+"ground_truth": "It uses Dense Passage Retrieval and Maximum Inner Product Search (MIPS) over a dense Wikipedia index."
+},
+{
+"question": "Why is the retrieved document treated as a latent variable?",
+"ground_truth": "To allow end-to-end training by marginalizing over retrieved documents instead of requiring retrieval supervision."
+},
+{
+"question": "Which Wikipedia dump was used to build the document index?",
+"ground_truth": "The December 2018 Wikipedia dump."
+},
+{
+"question": "How many Wikipedia document chunks were used in the index?",
+"ground_truth": "Approximately 21 million document chunks."
+},
+{
+"question": "How were Wikipedia articles split before indexing?",
+"ground_truth": "Each article was split into disjoint 100-word chunks."
+},
+{
+"question": "What optimization algorithm was used to train RAG?",
+"ground_truth": "Adam optimizer."
+},
+{
+"question": "Which open-domain QA datasets were used to evaluate RAG?",
+"ground_truth": "Natural Questions, TriviaQA, WebQuestions, and CuratedTrec."
+},
+{
+"question": "What Exact Match score did RAG-Sequence achieve on Natural Questions?",
+"ground_truth": "44.5 Exact Match."
+},
+{
+"question": "What Exact Match score did RAG-Sequence achieve on TriviaQA-Wiki?",
+"ground_truth": "68.0 Exact Match."
+},
+{
+"question": "What advantage does RAG have over purely parametric models like BART or T5?",
+"ground_truth": "Its knowledge can be updated by replacing the retrieval index without retraining the model."
+},
+{
+"question": "What was demonstrated by the index hot-swapping experiment?",
+"ground_truth": "RAG can update its world knowledge by replacing its non-parametric memory with a newer document index."
+},
+{
+"question": "How did human evaluators compare RAG and BART for Jeopardy question generation?",
+"ground_truth": "RAG generations were judged to be more factual and more specific than BART generations."
+},
+{
+"question": "What was the key conclusion of the paper?",
+"ground_truth": "Combining retrieval-based non-parametric memory with pre-trained generative models significantly improves performance on knowledge-intensive NLP tasks."
+}
+
+
+]

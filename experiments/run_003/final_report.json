@@ -1,0 +1,163 @@
+{
+    "averages": {
+        "average_similarity": 0.33487999999999996,
+        "average_faithfulness": 0.44395500000000004,
+        "average_coverage": 0.33487999999999996,
+        "average_final": 0.2784275000000001
+    },
+    "Top_5": [
+        {
+            "question": "How many encoder layers are used in the base Transformer model?",
+            "ground_truth": "The encoder consists of 6 identical layers.",
+            "prediction": "The encoder is composed of a stack of N = 6 identical layers.",
+            "retrieved_chunks": [
+                "Encoder: The encoder is composed of a stack of N = 6 identical layers. Each layer has two",
+                "positional encodings in both the encoder and decoder stacks. For the base model, we use a rate of",
+                "sub-layers in each encoder layer, the decoder inserts a third sub-layer, which performs multi-head"
+            ],
+            "exact_match_score": 0,
+            "similarity_score": 0.9148,
+            "faithfulness_score": 0.7987,
+            "coverage_score": 0.9148,
+            "final_score": 0.6571
+        },
+        {
+            "question": "How many decoder layers are used in the base Transformer model?",
+            "ground_truth": "The decoder consists of 6 identical layers.",
+            "prediction": "The decoder is composed of a stack of N = 6 identical layers.",
+            "retrieved_chunks": [
+                "Decoder: The decoder is also composed of a stack ofN = 6 identical layers. In addition to the two",
+                "positional encodings in both the encoder and decoder stacks. For the base model, we use a rate of",
+                "sub-layers in each encoder layer, the decoder inserts a third sub-layer, which performs multi-head"
+            ],
+            "exact_match_score": 0,
+            "similarity_score": 0.9137,
+            "faithfulness_score": 0.7647,
+            "coverage_score": 0.9137,
+            "final_score": 0.648
+        },
+        {
+            "question": "What is self-attention?",
+            "ground_truth": "Self-attention is an attention mechanism that relates different positions within a single sequence to compute a representation of that sequence.",
+            "prediction": "Self-attention, sometimes called intra-attention, is an attention mechanism relating different elements of a single input to each other.",
+            "retrieved_chunks": [
+                "Self-attention, sometimes called intra-attention is an attention mechanism relating different",
+                "multi-headed self-attention.",
+                "during training.\n4 Why Self-Attention"
+            ],
+            "exact_match_score": 0,
+            "similarity_score": 0.7664,
+            "faithfulness_score": 0.8594,
+            "coverage_score": 0.7664,
+            "final_score": 0.598
+        },
+        {
+            "question": "Which Wikipedia dump was used to build the document index?",
+            "ground_truth": "The December 2018 Wikipedia dump.",
+            "prediction": "The December 2016 Wikipedia dump was used to build the document index.",
+            "retrieved_chunks": [
+                "vector index of Wikipedia, accessed with a pre-trained neural retriever. We com-",
+                "Wikipedia dump from December 2016 and compare outputs from RAG using this index to the newer",
+                "Karpukhin et al. [26], we use the December 2018 dump. Each Wikipedia article is split into disjoint"
+            ],
+            "exact_match_score": 0,
+            "similarity_score": 0.7702,
+            "faithfulness_score": 0.7724,
+            "coverage_score": 0.7702,
+            "final_score": 0.5782
+        },
+        {
+            "question": "How did human evaluators compare RAG and BART for Jeopardy question generation?",
+            "ground_truth": "RAG generations were judged to be more factual and more specific than BART generations.",
+            "prediction": "Human evaluators found that people prefer RAG's generation over purely parametric BART, and they found RAG more factual.",
+            "retrieved_chunks": [
+                "Table 2 shows that RAG-Token performs better than RAG-Sequence on Jeopardy question generation,",
+                "found that people prefer RAG’s generation over purely parametric BART, ﬁnding RAG more factual",
+                "Table 4: Human assessments for the Jeopardy\nQuestion Generation Task.\nFactuality Speciﬁcity"
+            ],
+            "exact_match_score": 0,
+            "similarity_score": 0.8082,
+            "faithfulness_score": 0.6777,
+            "coverage_score": 0.8082,
+            "final_score": 0.5735
+        }
+    ],
+    "Worst_5": [
+        {
+            "question": "What are the two main components of a RAG model?",
+            "ground_truth": "A neural retriever and a sequence-to-sequence generator.",
+            "prediction": "I could not find that information in the provided documents.",
+            "retrieved_chunks": [
+                "is a classiﬁcation task, both RAG models are equivalent.",
+                "without access to an external knowledge source. Our RAG models achieve state-of-the-art results",
+                "examples/rag/. An interactive demo of RAG models can be found at https://huggingface.co/rag/\n2"
+            ],
+            "exact_match_score": 0,
+            "similarity_score": -0.001,
+            "faithfulness_score": -0.0902,
+            "coverage_score": -0.001,
+            "final_score": -0.0231
+        },
+        {
+            "question": "What optimization algorithm was used to train RAG?",
+            "ground_truth": "Adam optimizer.",
+            "prediction": "I could not find that information in the provided documents.",
+            "retrieved_chunks": [
+                "without access to an external knowledge source. Our RAG models achieve state-of-the-art results",
+                "We train all RAG models and BART baselines using Fairseq [45].2 We train with mixed precision",
+                "pre-training [ 20]. It is worth noting that RAG’s"
+            ],
+            "exact_match_score": 0,
+            "similarity_score": -0.0183,
+            "faithfulness_score": -0.0316,
+            "coverage_score": -0.0183,
+            "final_score": -0.017
+        },
+        {
+            "question": "Why is self-attention advantageous for long-range dependencies?",
+            "ground_truth": "Because any two positions can interact directly with a path length of O(1), making long-range dependencies easier to learn.",
+            "prediction": "I could not find that information in the provided documents.",
+            "retrieved_chunks": [
+                "Self-attention, sometimes called intra-attention is an attention mechanism relating different",
+                "computational complexity, self-attention layers are faster than recurrent layers when the sequence",
+                "As side beneﬁt, self-attention could yield more interpretable models. We inspect attention"
+            ],
+            "exact_match_score": 0,
+            "similarity_score": -0.0064,
+            "faithfulness_score": 0.0005,
+            "coverage_score": -0.0064,
+            "final_score": -0.0031
+        },
+        {
+            "question": "What optimizer was used to train the Transformer?",
+            "ground_truth": "Adam optimizer.",
+            "prediction": "I could not find that information in the provided documents.",
+            "retrieved_chunks": [
+                "designed and implemented the ﬁrst Transformer models and",
+                "Transformers [66]3, which achieves equivalent performance to the previous version but is a cleaner",
+                "it more difﬁcult to learn dependencies between distant positions [ 11]. In the Transformer this is"
+            ],
+            "exact_match_score": 0,
+            "similarity_score": -0.0183,
+            "faithfulness_score": 0.1461,
+            "coverage_score": -0.0183,
+            "final_score": 0.0274
+        },
+        {
+            "question": "What model is used as the retriever in RAG?",
+            "ground_truth": "Dense Passage Retriever (DPR).",
+            "prediction": "I could not find that information in the provided documents.",
+            "retrieved_chunks": [
+                "without access to an external knowledge source. Our RAG models achieve state-of-the-art results",
+                "blob/master/examples/rag/README.md and an interactive demo of a RAG model can be found",
+                "paper, as well as HuggingFace for their help in open-sourcing code to run RAG models. The authors"
+            ],
+            "exact_match_score": 0,
+            "similarity_score": 0.0904,
+            "faithfulness_score": -0.0712,
+            "coverage_score": 0.0904,
+            "final_score": 0.0274
+        }
+    ],
+    "distributions": {}
+}

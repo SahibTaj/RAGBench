@@ -1,0 +1,163 @@
+{
+    "averages": {
+        "average_similarity": 0.36343249999999994,
+        "average_faithfulness": 0.4504624999999999,
+        "average_coverage": 0.36343249999999994,
+        "average_final": 0.29433250000000016
+    },
+    "Top_5": [
+        {
+            "question": "What is self-attention?",
+            "ground_truth": "Self-attention is an attention mechanism that relates different positions within a single sequence to compute a representation of that sequence.",
+            "prediction": "Self-attention is an attention mechanism relating different positions of a single sequence in order to compute a representation of the sequence.",
+            "retrieved_chunks": [
+                "[21] Minh-Thang Luong, Hieu Pham, and Christopher D Manning. Effective approaches to attention-",
+                "the number of operations required to relate signals from two arbitrary input or output positions grows\nin the distance between positions, linearly for ConvS2S and logarithmically for ByteNet. This makes\nit more difﬁcult to learn dependencies between distant positions [ 11]. In the Transformer this is\nreduced to a constant number of operations, albeit at the cost of reduced effective resolution due\nto averaging attention-weighted positions, an effect we counteract with Multi-Head Attention as\ndescribed in section 3.2.\nSelf-attention, sometimes called intra-attention is an attention mechanism relating different positions\nof a single sequence in order to compute a representation of the sequence. Self-attention has been\nused successfully in a variety of tasks including reading comprehension, abstractive summarization,\ntextual entailment and learning task-independent sentence representations [4, 22, 23, 19].",
+                "http://papers.nips.cc/paper/7181-attention-is-all-you-need.pdf ."
+            ],
+            "exact_match_score": 0,
+            "similarity_score": 0.9898,
+            "faithfulness_score": 0.7195,
+            "coverage_score": 0.9898,
+            "final_score": 0.6748
+        },
+        {
+            "question": "What is Scaled Dot-Product Attention?",
+            "ground_truth": "It computes attention weights by taking the dot product of queries and keys, scaling by sqrt(dk), applying softmax, and weighting values.",
+            "prediction": "Scaled Dot-Product Attention is a particular attention mechanism that computes the dot products of the queries with the keys, divides each by √dk, and applies a softmax function to obtain the weights on the values.",
+            "retrieved_chunks": [
+                "Scaled Dot-Product Attention\n Multi-Head Attention\nFigure 2: (left) Scaled Dot-Product Attention. (right) Multi-Head Attention consists of several\nattention layers running in parallel.\nquery with all keys, divide each by√dk, and apply a softmax function to obtain the weights on the\nvalues.\nIn practice, we compute the attention function on a set of queries simultaneously, packed together\ninto a matrixQ. The keys and values are also packed together into matricesK andV . We compute\nthe matrix of outputs as:\nAttention(Q,K,V ) = softmax(QK T\n√dk\n)V (1)\nThe two most commonly used attention functions are additive attention [2], and dot-product (multi-\nplicative) attention. Dot-product attention is identical to our algorithm, except for the scaling factor\nof 1√dk\n. Additive attention computes the compatibility function using a feed-forward network with\na single hidden layer. While the two are similar in theoretical complexity, dot-product attention is",
+                "sub-layer in the decoder stack to prevent positions from attending to subsequent positions. This\nmasking, combined with fact that the output embeddings are offset by one position, ensures that the\npredictions for positioni can depend only on the known outputs at positions less thani.\n3.2 Attention\nAn attention function can be described as mapping a query and a set of key-value pairs to an output,\nwhere the query, keys, values, and output are all vectors. The output is computed as a weighted sum\nof the values, where the weight assigned to each value is computed by a compatibility function of the\nquery with the corresponding key.\n3.2.1 Scaled Dot-Product Attention\nWe call our particular attention \"Scaled Dot-Product Attention\" (Figure 2). The input consists of\nqueries and keys of dimensiondk, and values of dimensiondv. We compute the dot products of the\n3",
+                "much faster and more space-efﬁcient in practice, since it can be implemented using highly optimized\nmatrix multiplication code.\nWhile for small values ofdk the two mechanisms perform similarly, additive attention outperforms\ndot product attention without scaling for larger values ofdk [3]. We suspect that for large values of\ndk, the dot products grow large in magnitude, pushing the softmax function into regions where it has\nextremely small gradients 4. To counteract this effect, we scale the dot products by 1√dk\n.\n3.2.2 Multi-Head Attention\nInstead of performing a single attention function withdmodel-dimensional keys, values and queries,\nwe found it beneﬁcial to linearly project the queries, keys and valuesh times with different, learned\nlinear projections todk,dk anddv dimensions, respectively. On each of these projected versions of\nqueries, keys and values we then perform the attention function in parallel, yieldingdv-dimensional"
+            ],
+            "exact_match_score": 0,
+            "similarity_score": 0.8236,
+            "faithfulness_score": 0.7808,
+            "coverage_score": 0.8236,
+            "final_score": 0.607
+        },
+        {
+            "question": "Why is scaling by sqrt(dk) used in attention?",
+            "ground_truth": "To prevent large dot-product values from pushing softmax into regions with extremely small gradients.",
+            "prediction": "To counteract the effect of the dot products growing large in magnitude, pushing the softmax function into regions where it has extremely small gradients.",
+            "retrieved_chunks": [
+                "much faster and more space-efﬁcient in practice, since it can be implemented using highly optimized\nmatrix multiplication code.\nWhile for small values ofdk the two mechanisms perform similarly, additive attention outperforms\ndot product attention without scaling for larger values ofdk [3]. We suspect that for large values of\ndk, the dot products grow large in magnitude, pushing the softmax function into regions where it has\nextremely small gradients 4. To counteract this effect, we scale the dot products by 1√dk\n.\n3.2.2 Multi-Head Attention\nInstead of performing a single attention function withdmodel-dimensional keys, values and queries,\nwe found it beneﬁcial to linearly project the queries, keys and valuesh times with different, learned\nlinear projections todk,dk anddv dimensions, respectively. On each of these projected versions of\nqueries, keys and values we then perform the attention function in parallel, yieldingdv-dimensional",
+                "Scaled Dot-Product Attention\n Multi-Head Attention\nFigure 2: (left) Scaled Dot-Product Attention. (right) Multi-Head Attention consists of several\nattention layers running in parallel.\nquery with all keys, divide each by√dk, and apply a softmax function to obtain the weights on the\nvalues.\nIn practice, we compute the attention function on a set of queries simultaneously, packed together\ninto a matrixQ. The keys and values are also packed together into matricesK andV . We compute\nthe matrix of outputs as:\nAttention(Q,K,V ) = softmax(QK T\n√dk\n)V (1)\nThe two most commonly used attention functions are additive attention [2], and dot-product (multi-\nplicative) attention. Dot-product attention is identical to our algorithm, except for the scaling factor\nof 1√dk\n. Additive attention computes the compatibility function using a feed-forward network with\na single hidden layer. While the two are similar in theoretical complexity, dot-product attention is",
+                "queries, keys and values we then perform the attention function in parallel, yieldingdv-dimensional\noutput values. These are concatenated and once again projected, resulting in the ﬁnal values, as\ndepicted in Figure 2.\nMulti-head attention allows the model to jointly attend to information from different representation\nsubspaces at different positions. With a single attention head, averaging inhibits this.\n4To illustrate why the dot products get large, assume that the components of q and k are independent random\nvariables with mean 0 and variance 1. Then their dot product, q · k = ∑dk\ni=1 qiki, has mean 0 and variance dk.\n4"
+            ],
+            "exact_match_score": 0,
+            "similarity_score": 0.8996,
+            "faithfulness_score": 0.5382,
+            "coverage_score": 0.8996,
+            "final_score": 0.5843
+        },
+        {
+            "question": "Which Wikipedia dump was used to build the document index?",
+            "ground_truth": "The December 2018 Wikipedia dump.",
+            "prediction": "The December 2016 Wikipedia dump was used to build the document index.",
+            "retrieved_chunks": [
+                "vector index of Wikipedia, accessed with a pre-trained neural retriever. We com-",
+                "Wikipedia dump from December 2016 and compare outputs from RAG using this index to the newer",
+                "Karpukhin et al. [26], we use the December 2018 dump. Each Wikipedia article is split into disjoint"
+            ],
+            "exact_match_score": 0,
+            "similarity_score": 0.7702,
+            "faithfulness_score": 0.7724,
+            "coverage_score": 0.7702,
+            "final_score": 0.5782
+        },
+        {
+            "question": "What is Multi-Head Attention?",
+            "ground_truth": "Multi-Head Attention performs multiple attention operations in parallel using different learned projections of queries, keys, and values.",
+            "prediction": "Multi-head attention is a mechanism that allows the model to jointly attend to information from different representation subspaces at different positions. It is achieved by performing the attention function in parallel, yielding dv-dimensional output values, which are then concatenated and projected to result in the final values.",
+            "retrieved_chunks": [
+                "queries, keys and values we then perform the attention function in parallel, yieldingdv-dimensional\noutput values. These are concatenated and once again projected, resulting in the ﬁnal values, as\ndepicted in Figure 2.\nMulti-head attention allows the model to jointly attend to information from different representation\nsubspaces at different positions. With a single attention head, averaging inhibits this.\n4To illustrate why the dot products get large, assume that the components of q and k are independent random\nvariables with mean 0 and variance 1. Then their dot product, q · k = ∑dk\ni=1 qiki, has mean 0 and variance dk.\n4",
+                "MultiHead(Q,K,V ) = Concat(head 1,..., headh)W O\nwhere headi = Attention(QW Q\ni ,KW K\ni ,VW V\ni )\nWhere the projections are parameter matricesW Q\ni ∈ Rdmodel×dk,W K\ni ∈ Rdmodel×dk,W V\ni ∈ Rdmodel×dv\nandW O∈ Rhdv×dmodel.\nIn this work we employ h = 8 parallel attention layers, or heads. For each of these we use\ndk =dv =dmodel/h = 64. Due to the reduced dimension of each head, the total computational cost\nis similar to that of single-head attention with full dimensionality.\n3.2.3 Applications of Attention in our Model\nThe Transformer uses multi-head attention in three different ways:\n• In \"encoder-decoder attention\" layers, the queries come from the previous decoder layer,\nand the memory keys and values come from the output of the encoder. This allows every\nposition in the decoder to attend over all positions in the input sequence. This mimics the\ntypical encoder-decoder attention mechanisms in sequence-to-sequence models such as\n[31, 2, 8].",
+                "[21] Minh-Thang Luong, Hieu Pham, and Christopher D Manning. Effective approaches to attention-"
+            ],
+            "exact_match_score": 0,
+            "similarity_score": 0.7676,
+            "faithfulness_score": 0.6858,
+            "coverage_score": 0.7676,
+            "final_score": 0.5552
+        }
+    ],
+    "Worst_5": [
+        {
+            "question": "What are the two main components of a RAG model?",
+            "ground_truth": "A neural retriever and a sequence-to-sequence generator.",
+            "prediction": "I could not find that information in the provided documents.",
+            "retrieved_chunks": [
+                "paper, as well as HuggingFace for their help in open-sourcing code to run RAG models. The authors\nwould also like to thank Kyunghyun Cho and Sewon Min for productive discussions and advice. EP\nthanks supports from the NSF Graduate Research Fellowship. PL is supported by the FAIR PhD\nprogram.\nReferences\n[1] Payal Bajaj, Daniel Campos, Nick Craswell, Li Deng, Jianfeng Gao, Xiaodong Liu, Rangan\nMajumder, Andrew McNamara, Bhaskar Mitra, Tri Nguyen, Mir Rosenberg, Xia Song, Alina",
+                "is a classiﬁcation task, both RAG models are equivalent.",
+                "without access to an external knowledge source. Our RAG models achieve state-of-the-art results"
+            ],
+            "exact_match_score": 0,
+            "similarity_score": -0.001,
+            "faithfulness_score": -0.0574,
+            "coverage_score": -0.001,
+            "final_score": -0.0149
+        },
+        {
+            "question": "What optimization algorithm was used to train RAG?",
+            "ground_truth": "Adam optimizer.",
+            "prediction": "I could not find that information in the provided documents.",
+            "retrieved_chunks": [
+                "without access to an external knowledge source. Our RAG models achieve state-of-the-art results",
+                "We train all RAG models and BART baselines using Fairseq [45].2 We train with mixed precision",
+                "paper, as well as HuggingFace for their help in open-sourcing code to run RAG models. The authors\nwould also like to thank Kyunghyun Cho and Sewon Min for productive discussions and advice. EP\nthanks supports from the NSF Graduate Research Fellowship. PL is supported by the FAIR PhD\nprogram.\nReferences\n[1] Payal Bajaj, Daniel Campos, Nick Craswell, Li Deng, Jianfeng Gao, Xiaodong Liu, Rangan\nMajumder, Andrew McNamara, Bhaskar Mitra, Tri Nguyen, Mir Rosenberg, Xia Song, Alina"
+            ],
+            "exact_match_score": 0,
+            "similarity_score": -0.0183,
+            "faithfulness_score": -0.0206,
+            "coverage_score": -0.0183,
+            "final_score": -0.0143
+        },
+        {
+            "question": "How does the decoder prevent attending to future tokens?",
+            "ground_truth": "By masking future positions in the self-attention mechanism.",
+            "prediction": "I could not find that information in the provided documents.",
+            "retrieved_chunks": [
+                "been generated. We refer to this decoding procedure as “Fast Decoding.”\n3 Experiments",
+                "beams for the marginals. We refer to this decoding procedure as “Thorough Decoding.” For longer",
+                "mation and softmax function to convert the decoder output to predicted next-token probabilities. In\nour model, we share the same weight matrix between the two embedding layers and the pre-softmax\nlinear transformation, similar to [24]. In the embedding layers, we multiply those weights by√dmodel.\n3.5 Positional Encoding\nSince our model contains no recurrence and no convolution, in order for the model to make use of the\norder of the sequence, we must inject some information about the relative or absolute position of the\ntokens in the sequence. To this end, we add \"positional encodings\" to the input embeddings at the\n5"
+            ],
+            "exact_match_score": 0,
+            "similarity_score": -0.0262,
+            "faithfulness_score": 0.0628,
+            "coverage_score": -0.0262,
+            "final_score": 0.0026
+        },
+        {
+            "question": "What type of positional encoding is used in the paper?",
+            "ground_truth": "Sinusoidal positional encodings based on sine and cosine functions of different frequencies.",
+            "prediction": "I could not find that information in the provided documents.",
+            "retrieved_chunks": [
+                "beams for the marginals. We refer to this decoding procedure as “Thorough Decoding.” For longer",
+                "been generated. We refer to this decoding procedure as “Fast Decoding.”\n3 Experiments",
+                "where d(z) is a dense representation of a document produced by a BERTBASE document encoder [8],"
+            ],
+            "exact_match_score": 0,
+            "similarity_score": -0.0341,
+            "faithfulness_score": 0.1194,
+            "coverage_score": -0.0341,
+            "final_score": 0.0128
+        },
+        {
+            "question": "What optimizer was used to train the Transformer?",
+            "ground_truth": "Adam optimizer.",
+            "prediction": "I could not find that information in the provided documents.",
+            "retrieved_chunks": [
+                "Transformers [66]3, which achieves equivalent performance to the previous version but is a cleaner",
+                "To evaluate the importance of different components of the Transformer, we varied our base model\nin different ways, measuring the change in performance on English-to-German translation on the\ndevelopment set, newstest2013. We used beam search as described in the previous section, but no\ncheckpoint averaging. We present these results in Table 3.\nIn Table 3 rows (A), we vary the number of attention heads and the attention key and value dimensions,\nkeeping the amount of computation constant, as described in Section 3.2.2. While single-head\nattention is 0.9 BLEU worse than the best setting, quality also drops off with too many heads.\n5We used values of 2.8, 3.7, 6.0 and 9.5 TFLOPS for K80, K40, M40 and P100, respectively.\n8",
+                "BART-large [32], a pre-trained seq2seq transformer [58] with 400M parameters. To combine the input"
+            ],
+            "exact_match_score": 0,
+            "similarity_score": -0.0183,
+            "faithfulness_score": 0.0951,
+            "coverage_score": -0.0183,
+            "final_score": 0.0146
+        }
+    ],
+    "distributions": {}
+}

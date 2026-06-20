@@ -1,0 +1,602 @@
+[
+    {
+        "question": "What is the main innovation proposed in the Transformer paper?",
+        "ground_truth": "The Transformer is a sequence transduction architecture based entirely on attention mechanisms, eliminating recurrence and convolutions.",
+        "prediction": "I could not find that information in the provided documents.",
+        "retrieved_chunks": [
+            "To evaluate the importance of different components of the Transformer, we varied our base model\nin different ways, measuring the change in performance on English-to-German translation on the\ndevelopment set, newstest2013. We used beam search as described in the previous section, but no\ncheckpoint averaging. We present these results in Table 3.\nIn Table 3 rows (A), we vary the number of attention heads and the attention key and value dimensions,\nkeeping the amount of computation constant, as described in Section 3.2.2. While single-head\nattention is 0.9 BLEU worse than the best setting, quality also drops off with too many heads.\n5We used values of 2.8, 3.7, 6.0 and 9.5 TFLOPS for K80, K40, M40 and P100, respectively.\n8",
+            "for Computational Linguistics, pages 3558–3567, Florence, Italy, July 2019. Association for\nComputational Linguistics. doi: 10.18653/v1/P19-1346. URL https://www.aclweb.org/\nanthology/P19-1346.\n[13] Angela Fan, Claire Gardent, Chloe Braud, and Antoine Bordes. Augmenting transformers\nwith KNN-based composite memory, 2020. URL https://openreview.net/forum?id=\nH1gx1CNKPH.\n[14] Thibault Févry, Livio Baldini Soares, Nicholas FitzGerald, Eunsol Choi, and Tom Kwiatkowski.",
+            "at https://huggingface.co/rag/\n2https://github.com/pytorch/fairseq\n3https://github.com/huggingface/transformers\n17"
+        ],
+        "exact_match_score": 0,
+        "similarity_score": 0.0434,
+        "faithfulness_score": 0.111,
+        "coverage_score": 0.0434,
+        "final_score": 0.0495
+    },
+    {
+        "question": "What problem with recurrent neural networks does the Transformer aim to solve?",
+        "ground_truth": "RNNs require sequential computation, limiting parallelization and increasing training time. The Transformer removes this constraint using attention.",
+        "prediction": "The Transformer aims to solve the problem of sequential computation in recurrent neural networks, allowing for significantly more parallelization.",
+        "retrieved_chunks": [
+            "tion models in various tasks, allowing modeling of dependencies without regard to their distance in\nthe input or output sequences [2, 16]. In all but a few cases [22], however, such attention mechanisms\nare used in conjunction with a recurrent network.\nIn this work we propose the Transformer, a model architecture eschewing recurrence and instead\nrelying entirely on an attention mechanism to draw global dependencies between input and output.\nThe Transformer allows for signiﬁcantly more parallelization and can reach a new state of the art in\ntranslation quality after being trained for as little as twelve hours on eight P100 GPUs.\n2 Background\nThe goal of reducing sequential computation also forms the foundation of the Extended Neural GPU\n[20], ByteNet [15] and ConvS2S [8], all of which use convolutional neural networks as basic building\nblock, computing hidden representations in parallel for all input and output positions. In these models,",
+            "In Table 3 rows (B), we observe that reducing the attention key size dk hurts model quality. This\nsuggests that determining compatibility is not easy and that a more sophisticated compatibility\nfunction than dot product may be beneﬁcial. We further observe in rows (C) and (D) that, as expected,\nbigger models are better, and dropout is very helpful in avoiding over-ﬁtting. In row (E) we replace our\nsinusoidal positional encoding with learned positional embeddings [8], and observe nearly identical\nresults to the base model.\n7 Conclusion\nIn this work, we presented the Transformer, the ﬁrst sequence transduction model based entirely on\nattention, replacing the recurrent layers most commonly used in encoder-decoder architectures with\nmulti-headed self-attention.\nFor translation tasks, the Transformer can be trained signiﬁcantly faster than architectures based\non recurrent or convolutional layers. On both WMT 2014 English-to-German and WMT 2014",
+            "on recurrent or convolutional layers. On both WMT 2014 English-to-German and WMT 2014\nEnglish-to-French translation tasks, we achieve a new state of the art. In the former task our best\nmodel outperforms even all previously reported ensembles.\nWe are excited about the future of attention-based models and plan to apply them to other tasks. We\nplan to extend the Transformer to problems involving input and output modalities other than text and\nto investigate local, restricted attention mechanisms to efﬁciently handle large inputs and outputs\nsuch as images, audio and video. Making generation less sequential is another research goals of ours.\nThe code we used to train and evaluate our models is available at https://github.com/\ntensorflow/tensor2tensor.\nAcknowledgements We are grateful to Nal Kalchbrenner and Stephan Gouws for their fruitful\ncomments, corrections and inspiration.\n9"
+        ],
+        "exact_match_score": 0,
+        "similarity_score": 0.6657,
+        "faithfulness_score": 0.6495,
+        "coverage_score": 0.6657,
+        "final_score": 0.4952
+    },
+    {
+        "question": "What is self-attention?",
+        "ground_truth": "Self-attention is an attention mechanism that relates different positions within a single sequence to compute a representation of that sequence.",
+        "prediction": "Self-attention, sometimes called intra-attention, is an attention mechanism relating different positions of a single sequence in order to compute a representation of the sequence.",
+        "retrieved_chunks": [
+            "the number of operations required to relate signals from two arbitrary input or output positions grows\nin the distance between positions, linearly for ConvS2S and logarithmically for ByteNet. This makes\nit more difﬁcult to learn dependencies between distant positions [ 11]. In the Transformer this is\nreduced to a constant number of operations, albeit at the cost of reduced effective resolution due\nto averaging attention-weighted positions, an effect we counteract with Multi-Head Attention as\ndescribed in section 3.2.\nSelf-attention, sometimes called intra-attention is an attention mechanism relating different positions\nof a single sequence in order to compute a representation of the sequence. Self-attention has been\nused successfully in a variety of tasks including reading comprehension, abstractive summarization,\ntextual entailment and learning task-independent sentence representations [4, 22, 23, 19].",
+            "Ł ukasz Kaiser, and Illia Polosukhin. Attention is all you need. In I. Guyon, U. V . Luxburg,\nS. Bengio, H. Wallach, R. Fergus, S. Vishwanathan, and R. Garnett, editors,Advances in Neural\nInformation Processing Systems 30, pages 5998–6008. Curran Associates, Inc., 2017. URL\nhttp://papers.nips.cc/paper/7181-attention-is-all-you-need.pdf .\n[59] Ashwin Vijayakumar, Michael Cogswell, Ramprasaath Selvaraju, Qing Sun, Stefan Lee, David",
+            "wherepos is the position andi is the dimension. That is, each dimension of the positional encoding\ncorresponds to a sinusoid. The wavelengths form a geometric progression from 2π to 10000· 2π. We\nchose this function because we hypothesized it would allow the model to easily learn to attend by\nrelative positions, since for any ﬁxed offsetk,PE pos+k can be represented as a linear function of\nPE pos.\nWe also experimented with using learned positional embeddings [8] instead, and found that the two\nversions produced nearly identical results (see Table 3 row (E)). We chose the sinusoidal version\nbecause it may allow the model to extrapolate to sequence lengths longer than the ones encountered\nduring training.\n4 Why Self-Attention\nIn this section we compare various aspects of self-attention layers to the recurrent and convolu-\ntional layers commonly used for mapping one variable-length sequence of symbol representations"
+        ],
+        "exact_match_score": 0,
+        "similarity_score": 0.9088,
+        "faithfulness_score": 0.7492,
+        "coverage_score": 0.9088,
+        "final_score": 0.6417
+    },
+    {
+        "question": "How many encoder layers are used in the base Transformer model?",
+        "ground_truth": "The encoder consists of 6 identical layers.",
+        "prediction": "The base Transformer model uses 6 encoder layers.",
+        "retrieved_chunks": [
+            "Figure 1: The Transformer - model architecture.\nwise fully connected feed-forward network. We employ a residual connection [10] around each of\nthe two sub-layers, followed by layer normalization [ 1]. That is, the output of each sub-layer is\nLayerNorm(x + Sublayer(x)), where Sublayer(x) is the function implemented by the sub-layer\nitself. To facilitate these residual connections, all sub-layers in the model, as well as the embedding\nlayers, produce outputs of dimensiondmodel = 512.\nDecoder: The decoder is also composed of a stack ofN = 6 identical layers. In addition to the two\nsub-layers in each encoder layer, the decoder inserts a third sub-layer, which performs multi-head\nattention over the output of the encoder stack. Similar to the encoder, we employ residual connections\naround each of the sub-layers, followed by layer normalization. We also modify the self-attention\nsub-layer in the decoder stack to prevent positions from attending to subsequent positions. This",
+            "of continuous representations z = (z1,...,z n). Given z, the decoder then generates an output\nsequence (y1,...,y m) of symbols one element at a time. At each step the model is auto-regressive\n[9], consuming the previously generated symbols as additional input when generating the next.\nThe Transformer follows this overall architecture using stacked self-attention and point-wise, fully\nconnected layers for both the encoder and decoder, shown in the left and right halves of Figure 1,\nrespectively.\n3.1 Encoder and Decoder Stacks\nEncoder: The encoder is composed of a stack of N = 6 identical layers. Each layer has two\nsub-layers. The ﬁrst is a multi-head self-attention mechanism, and the second is a simple, position-\n2",
+            "In addition to attention sub-layers, each of the layers in our encoder and decoder contains a fully\nconnected feed-forward network, which is applied to each position separately and identically. This\nconsists of two linear transformations with a ReLU activation in between.\nFFN(x) = max(0,xW 1 +b1)W2 +b2 (2)\nWhile the linear transformations are the same across different positions, they use different parameters\nfrom layer to layer. Another way of describing this is as two convolutions with kernel size 1.\nThe dimensionality of input and output is dmodel = 512 , and the inner-layer has dimensionality\ndf f = 2048.\n3.4 Embeddings and Softmax\nSimilarly to other sequence transduction models, we use learned embeddings to convert the input\ntokens and output tokens to vectors of dimensiondmodel. We also use the usual learned linear transfor-\nmation and softmax function to convert the decoder output to predicted next-token probabilities. In"
+        ],
+        "exact_match_score": 0,
+        "similarity_score": 0.7592,
+        "faithfulness_score": 0.684,
+        "coverage_score": 0.7592,
+        "final_score": 0.5506
+    },
+    {
+        "question": "How many decoder layers are used in the base Transformer model?",
+        "ground_truth": "The decoder consists of 6 identical layers.",
+        "prediction": "The base Transformer model uses 6 decoder layers.",
+        "retrieved_chunks": [
+            "Figure 1: The Transformer - model architecture.\nwise fully connected feed-forward network. We employ a residual connection [10] around each of\nthe two sub-layers, followed by layer normalization [ 1]. That is, the output of each sub-layer is\nLayerNorm(x + Sublayer(x)), where Sublayer(x) is the function implemented by the sub-layer\nitself. To facilitate these residual connections, all sub-layers in the model, as well as the embedding\nlayers, produce outputs of dimensiondmodel = 512.\nDecoder: The decoder is also composed of a stack ofN = 6 identical layers. In addition to the two\nsub-layers in each encoder layer, the decoder inserts a third sub-layer, which performs multi-head\nattention over the output of the encoder stack. Similar to the encoder, we employ residual connections\naround each of the sub-layers, followed by layer normalization. We also modify the self-attention\nsub-layer in the decoder stack to prevent positions from attending to subsequent positions. This",
+            "of continuous representations z = (z1,...,z n). Given z, the decoder then generates an output\nsequence (y1,...,y m) of symbols one element at a time. At each step the model is auto-regressive\n[9], consuming the previously generated symbols as additional input when generating the next.\nThe Transformer follows this overall architecture using stacked self-attention and point-wise, fully\nconnected layers for both the encoder and decoder, shown in the left and right halves of Figure 1,\nrespectively.\n3.1 Encoder and Decoder Stacks\nEncoder: The encoder is composed of a stack of N = 6 identical layers. Each layer has two\nsub-layers. The ﬁrst is a multi-head self-attention mechanism, and the second is a simple, position-\n2",
+            "Table 3: Variations on the Transformer architecture. Unlisted values are identical to those of the base\nmodel. All metrics are on the English-to-German translation development set, newstest2013. Listed\nperplexities are per-wordpiece, according to our byte-pair encoding, and should not be compared to\nper-word perplexities.\nN d model dff h d k dv Pdrop ϵls\ntrain PPL BLEU params\nsteps (dev) (dev) ×106\nbase 6 512 2048 8 64 64 0.1 0.1 100K 4.92 25.8 65\n(A)\n1 512 512 5.29 24.9\n4 128 128 5.00 25.5\n16 32 32 4.91 25.8\n32 16 16 5.01 25.4\n(B) 16 5.16 25.1 58\n32 5.01 25.4 60\n(C)\n2 6.11 23.7 36\n4 5.19 25.3 50\n8 4.88 25.5 80\n256 32 32 5.75 24.5 28\n1024 128 128 4.66 26.0 168\n1024 5.12 25.4 53\n4096 4.75 26.2 90\n(D)\n0.0 5.77 24.6\n0.2 4.95 25.5\n0.0 4.67 25.3\n0.2 5.47 25.7\n(E) positional embedding instead of sinusoids 4.92 25.7\nbig 6 1024 4096 16 0.3 300K 4.33 26.4 213\nIn Table 3 rows (B), we observe that reducing the attention key size dk hurts model quality. This"
+        ],
+        "exact_match_score": 0,
+        "similarity_score": 0.7294,
+        "faithfulness_score": 0.6525,
+        "coverage_score": 0.7294,
+        "final_score": 0.5278
+    },
+    {
+        "question": "What are the two sub-layers in each encoder layer?",
+        "ground_truth": "Multi-head self-attention and a position-wise feed-forward network.",
+        "prediction": "The two sub-layers in each encoder layer are:\n\n1. A multi-head self-attention mechanism.\n2. A simple, position-wise fully connected feed-forward network.",
+        "retrieved_chunks": [
+            "Figure 1: The Transformer - model architecture.\nwise fully connected feed-forward network. We employ a residual connection [10] around each of\nthe two sub-layers, followed by layer normalization [ 1]. That is, the output of each sub-layer is\nLayerNorm(x + Sublayer(x)), where Sublayer(x) is the function implemented by the sub-layer\nitself. To facilitate these residual connections, all sub-layers in the model, as well as the embedding\nlayers, produce outputs of dimensiondmodel = 512.\nDecoder: The decoder is also composed of a stack ofN = 6 identical layers. In addition to the two\nsub-layers in each encoder layer, the decoder inserts a third sub-layer, which performs multi-head\nattention over the output of the encoder stack. Similar to the encoder, we employ residual connections\naround each of the sub-layers, followed by layer normalization. We also modify the self-attention\nsub-layer in the decoder stack to prevent positions from attending to subsequent positions. This",
+            "of continuous representations z = (z1,...,z n). Given z, the decoder then generates an output\nsequence (y1,...,y m) of symbols one element at a time. At each step the model is auto-regressive\n[9], consuming the previously generated symbols as additional input when generating the next.\nThe Transformer follows this overall architecture using stacked self-attention and point-wise, fully\nconnected layers for both the encoder and decoder, shown in the left and right halves of Figure 1,\nrespectively.\n3.1 Encoder and Decoder Stacks\nEncoder: The encoder is composed of a stack of N = 6 identical layers. Each layer has two\nsub-layers. The ﬁrst is a multi-head self-attention mechanism, and the second is a simple, position-\n2",
+            "In addition to attention sub-layers, each of the layers in our encoder and decoder contains a fully\nconnected feed-forward network, which is applied to each position separately and identically. This\nconsists of two linear transformations with a ReLU activation in between.\nFFN(x) = max(0,xW 1 +b1)W2 +b2 (2)\nWhile the linear transformations are the same across different positions, they use different parameters\nfrom layer to layer. Another way of describing this is as two convolutions with kernel size 1.\nThe dimensionality of input and output is dmodel = 512 , and the inner-layer has dimensionality\ndf f = 2048.\n3.4 Embeddings and Softmax\nSimilarly to other sequence transduction models, we use learned embeddings to convert the input\ntokens and output tokens to vectors of dimensiondmodel. We also use the usual learned linear transfor-\nmation and softmax function to convert the decoder output to predicted next-token probabilities. In"
+        ],
+        "exact_match_score": 0,
+        "similarity_score": 0.522,
+        "faithfulness_score": 0.7346,
+        "coverage_score": 0.522,
+        "final_score": 0.4447
+    },
+    {
+        "question": "What is Scaled Dot-Product Attention?",
+        "ground_truth": "It computes attention weights by taking the dot product of queries and keys, scaling by sqrt(dk), applying softmax, and weighting values.",
+        "prediction": "Scaled Dot-Product Attention is a particular attention mechanism that computes the dot products of the queries with the keys, divides each by √dk, and applies a softmax function to obtain the weights on the values.",
+        "retrieved_chunks": [
+            "Scaled Dot-Product Attention\n Multi-Head Attention\nFigure 2: (left) Scaled Dot-Product Attention. (right) Multi-Head Attention consists of several\nattention layers running in parallel.\nquery with all keys, divide each by√dk, and apply a softmax function to obtain the weights on the\nvalues.\nIn practice, we compute the attention function on a set of queries simultaneously, packed together\ninto a matrixQ. The keys and values are also packed together into matricesK andV . We compute\nthe matrix of outputs as:\nAttention(Q,K,V ) = softmax(QK T\n√dk\n)V (1)\nThe two most commonly used attention functions are additive attention [2], and dot-product (multi-\nplicative) attention. Dot-product attention is identical to our algorithm, except for the scaling factor\nof 1√dk\n. Additive attention computes the compatibility function using a feed-forward network with\na single hidden layer. While the two are similar in theoretical complexity, dot-product attention is",
+            "sub-layer in the decoder stack to prevent positions from attending to subsequent positions. This\nmasking, combined with fact that the output embeddings are offset by one position, ensures that the\npredictions for positioni can depend only on the known outputs at positions less thani.\n3.2 Attention\nAn attention function can be described as mapping a query and a set of key-value pairs to an output,\nwhere the query, keys, values, and output are all vectors. The output is computed as a weighted sum\nof the values, where the weight assigned to each value is computed by a compatibility function of the\nquery with the corresponding key.\n3.2.1 Scaled Dot-Product Attention\nWe call our particular attention \"Scaled Dot-Product Attention\" (Figure 2). The input consists of\nqueries and keys of dimensiondk, and values of dimensiondv. We compute the dot products of the\n3",
+            "much faster and more space-efﬁcient in practice, since it can be implemented using highly optimized\nmatrix multiplication code.\nWhile for small values ofdk the two mechanisms perform similarly, additive attention outperforms\ndot product attention without scaling for larger values ofdk [3]. We suspect that for large values of\ndk, the dot products grow large in magnitude, pushing the softmax function into regions where it has\nextremely small gradients 4. To counteract this effect, we scale the dot products by 1√dk\n.\n3.2.2 Multi-Head Attention\nInstead of performing a single attention function withdmodel-dimensional keys, values and queries,\nwe found it beneﬁcial to linearly project the queries, keys and valuesh times with different, learned\nlinear projections todk,dk anddv dimensions, respectively. On each of these projected versions of\nqueries, keys and values we then perform the attention function in parallel, yieldingdv-dimensional"
+        ],
+        "exact_match_score": 0,
+        "similarity_score": 0.8236,
+        "faithfulness_score": 0.7808,
+        "coverage_score": 0.8236,
+        "final_score": 0.607
+    },
+    {
+        "question": "Why is scaling by sqrt(dk) used in attention?",
+        "ground_truth": "To prevent large dot-product values from pushing softmax into regions with extremely small gradients.",
+        "prediction": "To counteract the effect of the dot products growing large in magnitude, pushing the softmax function into regions where it has extremely small gradients.",
+        "retrieved_chunks": [
+            "much faster and more space-efﬁcient in practice, since it can be implemented using highly optimized\nmatrix multiplication code.\nWhile for small values ofdk the two mechanisms perform similarly, additive attention outperforms\ndot product attention without scaling for larger values ofdk [3]. We suspect that for large values of\ndk, the dot products grow large in magnitude, pushing the softmax function into regions where it has\nextremely small gradients 4. To counteract this effect, we scale the dot products by 1√dk\n.\n3.2.2 Multi-Head Attention\nInstead of performing a single attention function withdmodel-dimensional keys, values and queries,\nwe found it beneﬁcial to linearly project the queries, keys and valuesh times with different, learned\nlinear projections todk,dk anddv dimensions, respectively. On each of these projected versions of\nqueries, keys and values we then perform the attention function in parallel, yieldingdv-dimensional",
+            "Scaled Dot-Product Attention\n Multi-Head Attention\nFigure 2: (left) Scaled Dot-Product Attention. (right) Multi-Head Attention consists of several\nattention layers running in parallel.\nquery with all keys, divide each by√dk, and apply a softmax function to obtain the weights on the\nvalues.\nIn practice, we compute the attention function on a set of queries simultaneously, packed together\ninto a matrixQ. The keys and values are also packed together into matricesK andV . We compute\nthe matrix of outputs as:\nAttention(Q,K,V ) = softmax(QK T\n√dk\n)V (1)\nThe two most commonly used attention functions are additive attention [2], and dot-product (multi-\nplicative) attention. Dot-product attention is identical to our algorithm, except for the scaling factor\nof 1√dk\n. Additive attention computes the compatibility function using a feed-forward network with\na single hidden layer. While the two are similar in theoretical complexity, dot-product attention is",
+            "queries, keys and values we then perform the attention function in parallel, yieldingdv-dimensional\noutput values. These are concatenated and once again projected, resulting in the ﬁnal values, as\ndepicted in Figure 2.\nMulti-head attention allows the model to jointly attend to information from different representation\nsubspaces at different positions. With a single attention head, averaging inhibits this.\n4To illustrate why the dot products get large, assume that the components of q and k are independent random\nvariables with mean 0 and variance 1. Then their dot product, q · k = ∑dk\ni=1 qiki, has mean 0 and variance dk.\n4"
+        ],
+        "exact_match_score": 0,
+        "similarity_score": 0.8996,
+        "faithfulness_score": 0.5382,
+        "coverage_score": 0.8996,
+        "final_score": 0.5843
+    },
+    {
+        "question": "What is Multi-Head Attention?",
+        "ground_truth": "Multi-Head Attention performs multiple attention operations in parallel using different learned projections of queries, keys, and values.",
+        "prediction": "Multi-head attention is an attention mechanism that allows the model to jointly attend to information from different representation subspaces at different positions. It is used in the Transformer model to improve the ability to learn dependencies between distant positions in a sequence.",
+        "retrieved_chunks": [
+            "queries, keys and values we then perform the attention function in parallel, yieldingdv-dimensional\noutput values. These are concatenated and once again projected, resulting in the ﬁnal values, as\ndepicted in Figure 2.\nMulti-head attention allows the model to jointly attend to information from different representation\nsubspaces at different positions. With a single attention head, averaging inhibits this.\n4To illustrate why the dot products get large, assume that the components of q and k are independent random\nvariables with mean 0 and variance 1. Then their dot product, q · k = ∑dk\ni=1 qiki, has mean 0 and variance dk.\n4",
+            "MultiHead(Q,K,V ) = Concat(head 1,..., headh)W O\nwhere headi = Attention(QW Q\ni ,KW K\ni ,VW V\ni )\nWhere the projections are parameter matricesW Q\ni ∈ Rdmodel×dk,W K\ni ∈ Rdmodel×dk,W V\ni ∈ Rdmodel×dv\nandW O∈ Rhdv×dmodel.\nIn this work we employ h = 8 parallel attention layers, or heads. For each of these we use\ndk =dv =dmodel/h = 64. Due to the reduced dimension of each head, the total computational cost\nis similar to that of single-head attention with full dimensionality.\n3.2.3 Applications of Attention in our Model\nThe Transformer uses multi-head attention in three different ways:\n• In \"encoder-decoder attention\" layers, the queries come from the previous decoder layer,\nand the memory keys and values come from the output of the encoder. This allows every\nposition in the decoder to attend over all positions in the input sequence. This mimics the\ntypical encoder-decoder attention mechanisms in sequence-to-sequence models such as\n[31, 2, 8].",
+            "the number of operations required to relate signals from two arbitrary input or output positions grows\nin the distance between positions, linearly for ConvS2S and logarithmically for ByteNet. This makes\nit more difﬁcult to learn dependencies between distant positions [ 11]. In the Transformer this is\nreduced to a constant number of operations, albeit at the cost of reduced effective resolution due\nto averaging attention-weighted positions, an effect we counteract with Multi-Head Attention as\ndescribed in section 3.2.\nSelf-attention, sometimes called intra-attention is an attention mechanism relating different positions\nof a single sequence in order to compute a representation of the sequence. Self-attention has been\nused successfully in a variety of tasks including reading comprehension, abstractive summarization,\ntextual entailment and learning task-independent sentence representations [4, 22, 23, 19]."
+        ],
+        "exact_match_score": 0,
+        "similarity_score": 0.7264,
+        "faithfulness_score": 0.57,
+        "coverage_score": 0.7264,
+        "final_score": 0.5057
+    },
+    {
+        "question": "How many attention heads are used in the base Transformer?",
+        "ground_truth": "8 attention heads.",
+        "prediction": "In this work, we employ h = 8 parallel attention layers, or heads.",
+        "retrieved_chunks": [
+            "MultiHead(Q,K,V ) = Concat(head 1,..., headh)W O\nwhere headi = Attention(QW Q\ni ,KW K\ni ,VW V\ni )\nWhere the projections are parameter matricesW Q\ni ∈ Rdmodel×dk,W K\ni ∈ Rdmodel×dk,W V\ni ∈ Rdmodel×dv\nandW O∈ Rhdv×dmodel.\nIn this work we employ h = 8 parallel attention layers, or heads. For each of these we use\ndk =dv =dmodel/h = 64. Due to the reduced dimension of each head, the total computational cost\nis similar to that of single-head attention with full dimensionality.\n3.2.3 Applications of Attention in our Model\nThe Transformer uses multi-head attention in three different ways:\n• In \"encoder-decoder attention\" layers, the queries come from the previous decoder layer,\nand the memory keys and values come from the output of the encoder. This allows every\nposition in the decoder to attend over all positions in the input sequence. This mimics the\ntypical encoder-decoder attention mechanisms in sequence-to-sequence models such as\n[31, 2, 8].",
+            "To evaluate the importance of different components of the Transformer, we varied our base model\nin different ways, measuring the change in performance on English-to-German translation on the\ndevelopment set, newstest2013. We used beam search as described in the previous section, but no\ncheckpoint averaging. We present these results in Table 3.\nIn Table 3 rows (A), we vary the number of attention heads and the attention key and value dimensions,\nkeeping the amount of computation constant, as described in Section 3.2.2. While single-head\nattention is 0.9 BLEU worse than the best setting, quality also drops off with too many heads.\n5We used values of 2.8, 3.7, 6.0 and 9.5 TFLOPS for K80, K40, M40 and P100, respectively.\n8",
+            "of continuous representations z = (z1,...,z n). Given z, the decoder then generates an output\nsequence (y1,...,y m) of symbols one element at a time. At each step the model is auto-regressive\n[9], consuming the previously generated symbols as additional input when generating the next.\nThe Transformer follows this overall architecture using stacked self-attention and point-wise, fully\nconnected layers for both the encoder and decoder, shown in the left and right halves of Figure 1,\nrespectively.\n3.1 Encoder and Decoder Stacks\nEncoder: The encoder is composed of a stack of N = 6 identical layers. Each layer has two\nsub-layers. The ﬁrst is a multi-head self-attention mechanism, and the second is a simple, position-\n2"
+        ],
+        "exact_match_score": 0,
+        "similarity_score": 0.6831,
+        "faithfulness_score": 0.6645,
+        "coverage_score": 0.6831,
+        "final_score": 0.5077
+    },
+    {
+        "question": "What is the value of d_model in the base Transformer?",
+        "ground_truth": "512.",
+        "prediction": "The value of d_model in the base Transformer is 512.",
+        "retrieved_chunks": [
+            "Table 3: Variations on the Transformer architecture. Unlisted values are identical to those of the base\nmodel. All metrics are on the English-to-German translation development set, newstest2013. Listed\nperplexities are per-wordpiece, according to our byte-pair encoding, and should not be compared to\nper-word perplexities.\nN d model dff h d k dv Pdrop ϵls\ntrain PPL BLEU params\nsteps (dev) (dev) ×106\nbase 6 512 2048 8 64 64 0.1 0.1 100K 4.92 25.8 65\n(A)\n1 512 512 5.29 24.9\n4 128 128 5.00 25.5\n16 32 32 4.91 25.8\n32 16 16 5.01 25.4\n(B) 16 5.16 25.1 58\n32 5.01 25.4 60\n(C)\n2 6.11 23.7 36\n4 5.19 25.3 50\n8 4.88 25.5 80\n256 32 32 5.75 24.5 28\n1024 128 128 4.66 26.0 168\n1024 5.12 25.4 53\n4096 4.75 26.2 90\n(D)\n0.0 5.77 24.6\n0.2 4.95 25.5\n0.0 4.67 25.3\n0.2 5.47 25.7\n(E) positional embedding instead of sinusoids 4.92 25.7\nbig 6 1024 4096 16 0.3 300K 4.33 26.4 213\nIn Table 3 rows (B), we observe that reducing the attention key size dk hurts model quality. This",
+            "Table 2: The Transformer achieves better BLEU scores than previous state-of-the-art models on the\nEnglish-to-German and English-to-French newstest2014 tests at a fraction of the training cost.\nModel\nBLEU Training Cost (FLOPs)\nEN-DE EN-FR EN-DE EN-FR\nByteNet [15] 23.75\nDeep-Att + PosUnk [32] 39.2 1.0· 1020\nGNMT + RL [31] 24.6 39.92 2.3· 1019 1.4· 1020\nConvS2S [8] 25.16 40.46 9.6· 1018 1.5· 1020\nMoE [26] 26.03 40.56 2.0· 1019 1.2· 1020\nDeep-Att + PosUnk Ensemble [32] 40.4 8.0· 1020\nGNMT + RL Ensemble [31] 26.30 41.16 1.8· 1020 1.1· 1021\nConvS2S Ensemble [8] 26.36 41.29 7.7· 1019 1.2· 1021\nTransformer (base model) 27.3 38.1 3.3 · 1018\nTransformer (big) 28.4 41.0 2.3· 1019\nLabel Smoothing During training, we employed label smoothing of value ϵls = 0.1 [30]. This\nhurts perplexity, as the model learns to be more unsure, but improves accuracy and BLEU score.\n6 Results\n6.1 Machine Translation\nOn the WMT 2014 English-to-German translation task, the big transformer model (Transformer (big)",
+            "To evaluate the importance of different components of the Transformer, we varied our base model\nin different ways, measuring the change in performance on English-to-German translation on the\ndevelopment set, newstest2013. We used beam search as described in the previous section, but no\ncheckpoint averaging. We present these results in Table 3.\nIn Table 3 rows (A), we vary the number of attention heads and the attention key and value dimensions,\nkeeping the amount of computation constant, as described in Section 3.2.2. While single-head\nattention is 0.9 BLEU worse than the best setting, quality also drops off with too many heads.\n5We used values of 2.8, 3.7, 6.0 and 9.5 TFLOPS for K80, K40, M40 and P100, respectively.\n8"
+        ],
+        "exact_match_score": 0,
+        "similarity_score": 0.399,
+        "faithfulness_score": 0.4975,
+        "coverage_score": 0.399,
+        "final_score": 0.3239
+    },
+    {
+        "question": "What is the dimensionality of the feed-forward network hidden layer?",
+        "ground_truth": "2048.",
+        "prediction": "The dimensionality of the feed-forward network hidden layer is df f = 2048.",
+        "retrieved_chunks": [
+            "Figure 1: The Transformer - model architecture.\nwise fully connected feed-forward network. We employ a residual connection [10] around each of\nthe two sub-layers, followed by layer normalization [ 1]. That is, the output of each sub-layer is\nLayerNorm(x + Sublayer(x)), where Sublayer(x) is the function implemented by the sub-layer\nitself. To facilitate these residual connections, all sub-layers in the model, as well as the embedding\nlayers, produce outputs of dimensiondmodel = 512.\nDecoder: The decoder is also composed of a stack ofN = 6 identical layers. In addition to the two\nsub-layers in each encoder layer, the decoder inserts a third sub-layer, which performs multi-head\nattention over the output of the encoder stack. Similar to the encoder, we employ residual connections\naround each of the sub-layers, followed by layer normalization. We also modify the self-attention\nsub-layer in the decoder stack to prevent positions from attending to subsequent positions. This",
+            "In addition to attention sub-layers, each of the layers in our encoder and decoder contains a fully\nconnected feed-forward network, which is applied to each position separately and identically. This\nconsists of two linear transformations with a ReLU activation in between.\nFFN(x) = max(0,xW 1 +b1)W2 +b2 (2)\nWhile the linear transformations are the same across different positions, they use different parameters\nfrom layer to layer. Another way of describing this is as two convolutions with kernel size 1.\nThe dimensionality of input and output is dmodel = 512 , and the inner-layer has dimensionality\ndf f = 2048.\n3.4 Embeddings and Softmax\nSimilarly to other sequence transduction models, we use learned embeddings to convert the input\ntokens and output tokens to vectors of dimensiondmodel. We also use the usual learned linear transfor-\nmation and softmax function to convert the decoder output to predicted next-token probabilities. In",
+            "Table 1: Maximum path lengths, per-layer complexity and minimum number of sequential operations\nfor different layer types.n is the sequence length,d is the representation dimension,k is the kernel\nsize of convolutions andr the size of the neighborhood in restricted self-attention.\nLayer Type Complexity per Layer Sequential Maximum Path Length\nOperations\nSelf-Attention O(n2·d) O(1) O(1)\nRecurrent O(n·d2) O(n) O(n)\nConvolutional O(k·n·d2) O(1) O(logk(n))\nSelf-Attention (restricted) O(r·n·d) O(1) O(n/r)\nbottoms of the encoder and decoder stacks. The positional encodings have the same dimensiondmodel\nas the embeddings, so that the two can be summed. There are many choices of positional encodings,\nlearned and ﬁxed [8].\nIn this work, we use sine and cosine functions of different frequencies:\nPE (pos,2i) =sin(pos/100002i/dmodel)\nPE (pos,2i+1) =cos(pos/100002i/dmodel)\nwherepos is the position andi is the dimension. That is, each dimension of the positional encoding"
+        ],
+        "exact_match_score": 0,
+        "similarity_score": 0.3253,
+        "faithfulness_score": 0.3609,
+        "coverage_score": 0.3253,
+        "final_score": 0.2529
+    },
+    {
+        "question": "Why are positional encodings necessary in the Transformer?",
+        "ground_truth": "Because the Transformer contains no recurrence or convolution and therefore needs explicit position information.",
+        "prediction": "I could not find that information in the provided documents.",
+        "retrieved_chunks": [
+            "of continuous representations z = (z1,...,z n). Given z, the decoder then generates an output\nsequence (y1,...,y m) of symbols one element at a time. At each step the model is auto-regressive\n[9], consuming the previously generated symbols as additional input when generating the next.\nThe Transformer follows this overall architecture using stacked self-attention and point-wise, fully\nconnected layers for both the encoder and decoder, shown in the left and right halves of Figure 1,\nrespectively.\n3.1 Encoder and Decoder Stacks\nEncoder: The encoder is composed of a stack of N = 6 identical layers. Each layer has two\nsub-layers. The ﬁrst is a multi-head self-attention mechanism, and the second is a simple, position-\n2",
+            "Figure 1: The Transformer - model architecture.\nwise fully connected feed-forward network. We employ a residual connection [10] around each of\nthe two sub-layers, followed by layer normalization [ 1]. That is, the output of each sub-layer is\nLayerNorm(x + Sublayer(x)), where Sublayer(x) is the function implemented by the sub-layer\nitself. To facilitate these residual connections, all sub-layers in the model, as well as the embedding\nlayers, produce outputs of dimensiondmodel = 512.\nDecoder: The decoder is also composed of a stack ofN = 6 identical layers. In addition to the two\nsub-layers in each encoder layer, the decoder inserts a third sub-layer, which performs multi-head\nattention over the output of the encoder stack. Similar to the encoder, we employ residual connections\naround each of the sub-layers, followed by layer normalization. We also modify the self-attention\nsub-layer in the decoder stack to prevent positions from attending to subsequent positions. This",
+            "for Computational Linguistics, pages 3558–3567, Florence, Italy, July 2019. Association for\nComputational Linguistics. doi: 10.18653/v1/P19-1346. URL https://www.aclweb.org/\nanthology/P19-1346.\n[13] Angela Fan, Claire Gardent, Chloe Braud, and Antoine Bordes. Augmenting transformers\nwith KNN-based composite memory, 2020. URL https://openreview.net/forum?id=\nH1gx1CNKPH.\n[14] Thibault Févry, Livio Baldini Soares, Nicholas FitzGerald, Eunsol Choi, and Tom Kwiatkowski."
+        ],
+        "exact_match_score": 0,
+        "similarity_score": 0.1228,
+        "faithfulness_score": 0.0141,
+        "coverage_score": 0.1228,
+        "final_score": 0.0649
+    },
+    {
+        "question": "What type of positional encoding is used in the paper?",
+        "ground_truth": "Sinusoidal positional encodings based on sine and cosine functions of different frequencies.",
+        "prediction": "The paper uses sinusoidal positional encoding.",
+        "retrieved_chunks": [
+            "of continuous representations z = (z1,...,z n). Given z, the decoder then generates an output\nsequence (y1,...,y m) of symbols one element at a time. At each step the model is auto-regressive\n[9], consuming the previously generated symbols as additional input when generating the next.\nThe Transformer follows this overall architecture using stacked self-attention and point-wise, fully\nconnected layers for both the encoder and decoder, shown in the left and right halves of Figure 1,\nrespectively.\n3.1 Encoder and Decoder Stacks\nEncoder: The encoder is composed of a stack of N = 6 identical layers. Each layer has two\nsub-layers. The ﬁrst is a multi-head self-attention mechanism, and the second is a simple, position-\n2",
+            "mation and softmax function to convert the decoder output to predicted next-token probabilities. In\nour model, we share the same weight matrix between the two embedding layers and the pre-softmax\nlinear transformation, similar to [24]. In the embedding layers, we multiply those weights by√dmodel.\n3.5 Positional Encoding\nSince our model contains no recurrence and no convolution, in order for the model to make use of the\norder of the sequence, we must inject some information about the relative or absolute position of the\ntokens in the sequence. To this end, we add \"positional encodings\" to the input embeddings at the\n5",
+            "wherepos is the position andi is the dimension. That is, each dimension of the positional encoding\ncorresponds to a sinusoid. The wavelengths form a geometric progression from 2π to 10000· 2π. We\nchose this function because we hypothesized it would allow the model to easily learn to attend by\nrelative positions, since for any ﬁxed offsetk,PE pos+k can be represented as a linear function of\nPE pos.\nWe also experimented with using learned positional embeddings [8] instead, and found that the two\nversions produced nearly identical results (see Table 3 row (E)). We chose the sinusoidal version\nbecause it may allow the model to extrapolate to sequence lengths longer than the ones encountered\nduring training.\n4 Why Self-Attention\nIn this section we compare various aspects of self-attention layers to the recurrent and convolu-\ntional layers commonly used for mapping one variable-length sequence of symbol representations"
+        ],
+        "exact_match_score": 0,
+        "similarity_score": 0.6746,
+        "faithfulness_score": 0.3549,
+        "coverage_score": 0.6746,
+        "final_score": 0.426
+    },
+    {
+        "question": "How does the decoder prevent attending to future tokens?",
+        "ground_truth": "By masking future positions in the self-attention mechanism.",
+        "prediction": "I could not find that information in the provided documents.",
+        "retrieved_chunks": [
+            "mation and softmax function to convert the decoder output to predicted next-token probabilities. In\nour model, we share the same weight matrix between the two embedding layers and the pre-softmax\nlinear transformation, similar to [24]. In the embedding layers, we multiply those weights by√dmodel.\n3.5 Positional Encoding\nSince our model contains no recurrence and no convolution, in order for the model to make use of the\norder of the sequence, we must inject some information about the relative or absolute position of the\ntokens in the sequence. To this end, we add \"positional encodings\" to the input embeddings at the\n5",
+            "preprint arXiv:2002.06177, 2020. URL https://arxiv.org/abs/2002.06177.\n[39] Luca Massarelli, Fabio Petroni, Aleksandra Piktus, Myle Ott, Tim Rocktäschel, Vassilis\nPlachouras, Fabrizio Silvestri, and Sebastian Riedel. How decoding strategies affect the\nveriﬁability of generated text. arXiv preprint arXiv:1911.03587 , 2019. URL https:\n//arxiv.org/abs/1911.03587.\n[40] Paulius Micikevicius, Sharan Narang, Jonah Alben, Gregory Diamos, Erich Elsen, David Garcia,",
+            "minimize the negative marginal log-likelihood of each target,∑\nj− logp(yj|xj) using stochastic\ngradient descent with Adam [28]. Updating the document encoder BERTd during training is costly as\nit requires the document index to be periodically updated as REALM does during pre-training [20].\nWe do not ﬁnd this step necessary for strong performance, and keep the document encoder (and\nindex) ﬁxed, only ﬁne-tuning the query encoder BERTq and the BART generator.\n2.5 Decoding\nAt test time, RAG-Sequence and RAG-Token require different ways to approximatearg maxyp(y|x).\nRAG-Token The RAG-Token model can be seen as a standard, autoregressive seq2seq genera-\ntor with transition probability: p′\nθ(yi|x,y 1:i−1) = ∑\nz∈top-k(p(·|x))pη(zi|x)pθ(yi|x,zi,y 1:i−1) To\ndecode, we can plugp′\nθ(yi|x,y 1:i−1) into a standard beam decoder.\nRAG-Sequence For RAG-Sequence, the likelihoodp(y|x) does not break into a conventional per-"
+        ],
+        "exact_match_score": 0,
+        "similarity_score": -0.0262,
+        "faithfulness_score": 0.0545,
+        "coverage_score": -0.0262,
+        "final_score": 0.0005
+    },
+    {
+        "question": "What optimizer was used to train the Transformer?",
+        "ground_truth": "Adam optimizer.",
+        "prediction": "I could not find that information in the provided documents.",
+        "retrieved_chunks": [
+            "To evaluate the importance of different components of the Transformer, we varied our base model\nin different ways, measuring the change in performance on English-to-German translation on the\ndevelopment set, newstest2013. We used beam search as described in the previous section, but no\ncheckpoint averaging. We present these results in Table 3.\nIn Table 3 rows (A), we vary the number of attention heads and the attention key and value dimensions,\nkeeping the amount of computation constant, as described in Section 3.2.2. While single-head\nattention is 0.9 BLEU worse than the best setting, quality also drops off with too many heads.\n5We used values of 2.8, 3.7, 6.0 and 9.5 TFLOPS for K80, K40, M40 and P100, respectively.\n8",
+            "For the base models, we used a single model obtained by averaging the last 5 checkpoints, which\nwere written at 10-minute intervals. For the big models, we averaged the last 20 checkpoints. We\nused beam search with a beam size of 4 and length penaltyα = 0.6 [31]. These hyperparameters\nwere chosen after experimentation on the development set. We set the maximum output length during\ninference to input length + 50, but terminate early when possible [31].\nTable 2 summarizes our results and compares our translation quality and training costs to other model\narchitectures from the literature. We estimate the number of ﬂoating point operations used to train a\nmodel by multiplying the training time, the number of GPUs used, and an estimate of the sustained\nsingle-precision ﬂoating-point capacity of each GPU 5.\n6.2 Model Variations\nTo evaluate the importance of different components of the Transformer, we varied our base model",
+            "Table 2: The Transformer achieves better BLEU scores than previous state-of-the-art models on the\nEnglish-to-German and English-to-French newstest2014 tests at a fraction of the training cost.\nModel\nBLEU Training Cost (FLOPs)\nEN-DE EN-FR EN-DE EN-FR\nByteNet [15] 23.75\nDeep-Att + PosUnk [32] 39.2 1.0· 1020\nGNMT + RL [31] 24.6 39.92 2.3· 1019 1.4· 1020\nConvS2S [8] 25.16 40.46 9.6· 1018 1.5· 1020\nMoE [26] 26.03 40.56 2.0· 1019 1.2· 1020\nDeep-Att + PosUnk Ensemble [32] 40.4 8.0· 1020\nGNMT + RL Ensemble [31] 26.30 41.16 1.8· 1020 1.1· 1021\nConvS2S Ensemble [8] 26.36 41.29 7.7· 1019 1.2· 1021\nTransformer (base model) 27.3 38.1 3.3 · 1018\nTransformer (big) 28.4 41.0 2.3· 1019\nLabel Smoothing During training, we employed label smoothing of value ϵls = 0.1 [30]. This\nhurts perplexity, as the model learns to be more unsure, but improves accuracy and BLEU score.\n6 Results\n6.1 Machine Translation\nOn the WMT 2014 English-to-German translation task, the big transformer model (Transformer (big)"
+        ],
+        "exact_match_score": 0,
+        "similarity_score": -0.0183,
+        "faithfulness_score": 0.0994,
+        "coverage_score": -0.0183,
+        "final_score": 0.0157
+    },
+    {
+        "question": "What BLEU score did the Transformer Big model achieve on WMT 2014 English-to-German translation?",
+        "ground_truth": "28.4 BLEU.",
+        "prediction": "The Transformer (big) model achieved a BLEU score of 28.4 on the WMT 2014 English-to-German translation task.",
+        "retrieved_chunks": [
+            "On the WMT 2014 English-to-German translation task, the big transformer model (Transformer (big)\nin Table 2) outperforms the best previously reported models (including ensembles) by more than 2.0\nBLEU, establishing a new state-of-the-art BLEU score of 28.4. The conﬁguration of this model is\nlisted in the bottom line of Table 3. Training took 3.5 days on 8 P100 GPUs. Even our base model\nsurpasses all previously published models and ensembles, at a fraction of the training cost of any of\nthe competitive models.\nOn the WMT 2014 English-to-French translation task, our big model achieves a BLEU score of 41.0,\noutperforming all of the previously published single models, at less than 1/4 the training cost of the\nprevious state-of-the-art model. The Transformer (big) model trained for English-to-French used\ndropout ratePdrop = 0.1, instead of 0.3.\nFor the base models, we used a single model obtained by averaging the last 5 checkpoints, which",
+            "Table 2: The Transformer achieves better BLEU scores than previous state-of-the-art models on the\nEnglish-to-German and English-to-French newstest2014 tests at a fraction of the training cost.\nModel\nBLEU Training Cost (FLOPs)\nEN-DE EN-FR EN-DE EN-FR\nByteNet [15] 23.75\nDeep-Att + PosUnk [32] 39.2 1.0· 1020\nGNMT + RL [31] 24.6 39.92 2.3· 1019 1.4· 1020\nConvS2S [8] 25.16 40.46 9.6· 1018 1.5· 1020\nMoE [26] 26.03 40.56 2.0· 1019 1.2· 1020\nDeep-Att + PosUnk Ensemble [32] 40.4 8.0· 1020\nGNMT + RL Ensemble [31] 26.30 41.16 1.8· 1020 1.1· 1021\nConvS2S Ensemble [8] 26.36 41.29 7.7· 1019 1.2· 1021\nTransformer (base model) 27.3 38.1 3.3 · 1018\nTransformer (big) 28.4 41.0 2.3· 1019\nLabel Smoothing During training, we employed label smoothing of value ϵls = 0.1 [30]. This\nhurts perplexity, as the model learns to be more unsure, but improves accuracy and BLEU score.\n6 Results\n6.1 Machine Translation\nOn the WMT 2014 English-to-German translation task, the big transformer model (Transformer (big)",
+            "To evaluate the importance of different components of the Transformer, we varied our base model\nin different ways, measuring the change in performance on English-to-German translation on the\ndevelopment set, newstest2013. We used beam search as described in the previous section, but no\ncheckpoint averaging. We present these results in Table 3.\nIn Table 3 rows (A), we vary the number of attention heads and the attention key and value dimensions,\nkeeping the amount of computation constant, as described in Section 3.2.2. While single-head\nattention is 0.9 BLEU worse than the best setting, quality also drops off with too many heads.\n5We used values of 2.8, 3.7, 6.0 and 9.5 TFLOPS for K80, K40, M40 and P100, respectively.\n8"
+        ],
+        "exact_match_score": 0,
+        "similarity_score": 0.3901,
+        "faithfulness_score": 0.8093,
+        "coverage_score": 0.3901,
+        "final_score": 0.3974
+    },
+    {
+        "question": "What BLEU score did the Transformer Big model achieve on WMT 2014 English-to-French translation?",
+        "ground_truth": "41.0 BLEU.",
+        "prediction": "The Transformer (big) model achieved a BLEU score of 41.0 on the WMT 2014 English-to-French translation task.",
+        "retrieved_chunks": [
+            "On the WMT 2014 English-to-German translation task, the big transformer model (Transformer (big)\nin Table 2) outperforms the best previously reported models (including ensembles) by more than 2.0\nBLEU, establishing a new state-of-the-art BLEU score of 28.4. The conﬁguration of this model is\nlisted in the bottom line of Table 3. Training took 3.5 days on 8 P100 GPUs. Even our base model\nsurpasses all previously published models and ensembles, at a fraction of the training cost of any of\nthe competitive models.\nOn the WMT 2014 English-to-French translation task, our big model achieves a BLEU score of 41.0,\noutperforming all of the previously published single models, at less than 1/4 the training cost of the\nprevious state-of-the-art model. The Transformer (big) model trained for English-to-French used\ndropout ratePdrop = 0.1, instead of 0.3.\nFor the base models, we used a single model obtained by averaging the last 5 checkpoints, which",
+            "Table 2: The Transformer achieves better BLEU scores than previous state-of-the-art models on the\nEnglish-to-German and English-to-French newstest2014 tests at a fraction of the training cost.\nModel\nBLEU Training Cost (FLOPs)\nEN-DE EN-FR EN-DE EN-FR\nByteNet [15] 23.75\nDeep-Att + PosUnk [32] 39.2 1.0· 1020\nGNMT + RL [31] 24.6 39.92 2.3· 1019 1.4· 1020\nConvS2S [8] 25.16 40.46 9.6· 1018 1.5· 1020\nMoE [26] 26.03 40.56 2.0· 1019 1.2· 1020\nDeep-Att + PosUnk Ensemble [32] 40.4 8.0· 1020\nGNMT + RL Ensemble [31] 26.30 41.16 1.8· 1020 1.1· 1021\nConvS2S Ensemble [8] 26.36 41.29 7.7· 1019 1.2· 1021\nTransformer (base model) 27.3 38.1 3.3 · 1018\nTransformer (big) 28.4 41.0 2.3· 1019\nLabel Smoothing During training, we employed label smoothing of value ϵls = 0.1 [30]. This\nhurts perplexity, as the model learns to be more unsure, but improves accuracy and BLEU score.\n6 Results\n6.1 Machine Translation\nOn the WMT 2014 English-to-German translation task, the big transformer model (Transformer (big)",
+            "To evaluate the importance of different components of the Transformer, we varied our base model\nin different ways, measuring the change in performance on English-to-German translation on the\ndevelopment set, newstest2013. We used beam search as described in the previous section, but no\ncheckpoint averaging. We present these results in Table 3.\nIn Table 3 rows (A), we vary the number of attention heads and the attention key and value dimensions,\nkeeping the amount of computation constant, as described in Section 3.2.2. While single-head\nattention is 0.9 BLEU worse than the best setting, quality also drops off with too many heads.\n5We used values of 2.8, 3.7, 6.0 and 9.5 TFLOPS for K80, K40, M40 and P100, respectively.\n8"
+        ],
+        "exact_match_score": 0,
+        "similarity_score": 0.4327,
+        "faithfulness_score": 0.8075,
+        "coverage_score": 0.4327,
+        "final_score": 0.4182
+    },
+    {
+        "question": "Why is self-attention advantageous for long-range dependencies?",
+        "ground_truth": "Because any two positions can interact directly with a path length of O(1), making long-range dependencies easier to learn.",
+        "prediction": "The shorter the paths between any combination of positions in the input and output sequences, the easier it is to learn long-range dependencies. Self-attention reduces the number of operations required to relate signals from two arbitrary input or output positions, making it easier to learn dependencies between distant positions.",
+        "retrieved_chunks": [
+            "and output sequences, the easier it is to learn long-range dependencies [11]. Hence we also compare\nthe maximum path length between any two input and output positions in networks composed of the\ndifferent layer types.\nAs noted in Table 1, a self-attention layer connects all positions with a constant number of sequentially\nexecuted operations, whereas a recurrent layer requires O(n) sequential operations. In terms of\ncomputational complexity, self-attention layers are faster than recurrent layers when the sequence\nlength n is smaller than the representation dimensionality d, which is most often the case with\nsentence representations used by state-of-the-art models in machine translations, such as word-piece\n[31] and byte-pair [25] representations. To improve computational performance for tasks involving\nvery long sequences, self-attention could be restricted to considering only a neighborhood of sizer in\n6",
+            "the number of operations required to relate signals from two arbitrary input or output positions grows\nin the distance between positions, linearly for ConvS2S and logarithmically for ByteNet. This makes\nit more difﬁcult to learn dependencies between distant positions [ 11]. In the Transformer this is\nreduced to a constant number of operations, albeit at the cost of reduced effective resolution due\nto averaging attention-weighted positions, an effect we counteract with Multi-Head Attention as\ndescribed in section 3.2.\nSelf-attention, sometimes called intra-attention is an attention mechanism relating different positions\nof a single sequence in order to compute a representation of the sequence. Self-attention has been\nused successfully in a variety of tasks including reading comprehension, abstractive summarization,\ntextual entailment and learning task-independent sentence representations [4, 22, 23, 19].",
+            "tional layers commonly used for mapping one variable-length sequence of symbol representations\n(x1,...,x n) to another sequence of equal length (z1,...,z n), with xi,z i∈ Rd, such as a hidden\nlayer in a typical sequence transduction encoder or decoder. Motivating our use of self-attention we\nconsider three desiderata.\nOne is the total computational complexity per layer. Another is the amount of computation that can\nbe parallelized, as measured by the minimum number of sequential operations required.\nThe third is the path length between long-range dependencies in the network. Learning long-range\ndependencies is a key challenge in many sequence transduction tasks. One key factor affecting the\nability to learn such dependencies is the length of the paths forward and backward signals have to\ntraverse in the network. The shorter these paths between any combination of positions in the input\nand output sequences, the easier it is to learn long-range dependencies [11]. Hence we also compare"
+        ],
+        "exact_match_score": 0,
+        "similarity_score": 0.5552,
+        "faithfulness_score": 0.677,
+        "coverage_score": 0.5552,
+        "final_score": 0.4469
+    },
+    {
+        "question": "What conclusion do the authors draw about the Transformer architecture?",
+        "ground_truth": "The Transformer achieves state-of-the-art translation results while training faster and relying entirely on attention mechanisms.",
+        "prediction": "I could not find that information in the provided documents.",
+        "retrieved_chunks": [
+            "To evaluate the importance of different components of the Transformer, we varied our base model\nin different ways, measuring the change in performance on English-to-German translation on the\ndevelopment set, newstest2013. We used beam search as described in the previous section, but no\ncheckpoint averaging. We present these results in Table 3.\nIn Table 3 rows (A), we vary the number of attention heads and the attention key and value dimensions,\nkeeping the amount of computation constant, as described in Section 3.2.2. While single-head\nattention is 0.9 BLEU worse than the best setting, quality also drops off with too many heads.\n5We used values of 2.8, 3.7, 6.0 and 9.5 TFLOPS for K80, K40, M40 and P100, respectively.\n8",
+            "of continuous representations z = (z1,...,z n). Given z, the decoder then generates an output\nsequence (y1,...,y m) of symbols one element at a time. At each step the model is auto-regressive\n[9], consuming the previously generated symbols as additional input when generating the next.\nThe Transformer follows this overall architecture using stacked self-attention and point-wise, fully\nconnected layers for both the encoder and decoder, shown in the left and right halves of Figure 1,\nrespectively.\n3.1 Encoder and Decoder Stacks\nEncoder: The encoder is composed of a stack of N = 6 identical layers. Each layer has two\nsub-layers. The ﬁrst is a multi-head self-attention mechanism, and the second is a simple, position-\n2",
+            "Figure 1: The Transformer - model architecture.\nwise fully connected feed-forward network. We employ a residual connection [10] around each of\nthe two sub-layers, followed by layer normalization [ 1]. That is, the output of each sub-layer is\nLayerNorm(x + Sublayer(x)), where Sublayer(x) is the function implemented by the sub-layer\nitself. To facilitate these residual connections, all sub-layers in the model, as well as the embedding\nlayers, produce outputs of dimensiondmodel = 512.\nDecoder: The decoder is also composed of a stack ofN = 6 identical layers. In addition to the two\nsub-layers in each encoder layer, the decoder inserts a third sub-layer, which performs multi-head\nattention over the output of the encoder stack. Similar to the encoder, we employ residual connections\naround each of the sub-layers, followed by layer normalization. We also modify the self-attention\nsub-layer in the decoder stack to prevent positions from attending to subsequent positions. This"
+        ],
+        "exact_match_score": 0,
+        "similarity_score": 0.0147,
+        "faithfulness_score": 0.0623,
+        "coverage_score": 0.0147,
+        "final_score": 0.0229
+    },
+    {
+        "question": "What is the main goal of Retrieval-Augmented Generation (RAG)?",
+        "ground_truth": "RAG combines parametric memory from a pre-trained seq2seq model with non-parametric memory from a retrieval system to improve knowledge-intensive NLP tasks.",
+        "prediction": "I could not find that information in the provided documents.",
+        "retrieved_chunks": [
+            "more diverse than RAG-Token’s, and both are signiﬁcantly more diverse than BART without needing\nany diversity-promoting decoding.\nRetrieval Ablations A key feature of RAG is learning to retrieve relevant information for the task.\nTo assess the effectiveness of the retrieval mechanism, we run ablations where we freeze the retriever\nduring training. As shown in Table 6, learned retrieval improves results for all tasks.",
+            "In preliminary experiments, we observed that for some tasks such as story generation [ 11], the\nretrieval component would “collapse” and learn to retrieve the same documents regardless of the\ninput. In these cases, once retrieval had collapsed, the generator would learn to ignore the documents,\nand the RAG model would perform equivalently to BART. The collapse could be due to a less-explicit\nrequirement for factual knowledge in some tasks, or the longer target sequences, which could result",
+            "the generation ﬂexibility of the “closed-book” (parametric only) approaches and the performance of\n\"open-book\" retrieval-based approaches. Unlike REALM and T5+SSM, RAG enjoys strong results\nwithout expensive, specialized “salient span masking” pre-training [ 20]. It is worth noting that RAG’s\nretriever is initialized using DPR’s retriever, which uses retrieval supervision on Natural Questions\nand TriviaQA. RAG compares favourably to the DPR QA system, which uses a BERT-based “cross-"
+        ],
+        "exact_match_score": 0,
+        "similarity_score": 0.0611,
+        "faithfulness_score": -0.0038,
+        "coverage_score": 0.0611,
+        "final_score": 0.0296
+    },
+    {
+        "question": "What are the two main components of a RAG model?",
+        "ground_truth": "A neural retriever and a sequence-to-sequence generator.",
+        "prediction": "I could not find that information in the provided documents.",
+        "retrieved_chunks": [
+            "paper, as well as HuggingFace for their help in open-sourcing code to run RAG models. The authors\nwould also like to thank Kyunghyun Cho and Sewon Min for productive discussions and advice. EP\nthanks supports from the NSF Graduate Research Fellowship. PL is supported by the FAIR PhD\nprogram.\nReferences\n[1] Payal Bajaj, Daniel Campos, Nick Craswell, Li Deng, Jianfeng Gao, Xiaodong Liu, Rangan\nMajumder, Andrew McNamara, Bhaskar Mitra, Tri Nguyen, Mir Rosenberg, Xia Song, Alina",
+            "Table 3: Examples from generation tasks. RAG models generate more speciﬁc and factually accurate\nresponses. ‘?’ indicates factually incorrect responses, * indicates partially correct responses.\nTask Input Model Generation\nMS-\nMARCO\ndeﬁne middle\near\nBART ?The middle ear is the part of the ear between the middle ear and the nose.\nRAG-T The middle ear is the portion of the ear internal to the eardrum.\nRAG-S The middle ear includes the tympanic cavity and the three ossicles.\nwhat currency\nneeded in",
+            "ers Library [66] and can be found at https://github.com/huggingface/transformers/blob/master/\nexamples/rag/. An interactive demo of RAG models can be found at https://huggingface.co/rag/\n2"
+        ],
+        "exact_match_score": 0,
+        "similarity_score": -0.001,
+        "faithfulness_score": 0.1613,
+        "coverage_score": -0.001,
+        "final_score": 0.0398
+    },
+    {
+        "question": "What model is used as the retriever in RAG?",
+        "ground_truth": "Dense Passage Retriever (DPR).",
+        "prediction": "DPR's retriever is used as the retriever in RAG.",
+        "retrieved_chunks": [
+            "paper, as well as HuggingFace for their help in open-sourcing code to run RAG models. The authors\nwould also like to thank Kyunghyun Cho and Sewon Min for productive discussions and advice. EP\nthanks supports from the NSF Graduate Research Fellowship. PL is supported by the FAIR PhD\nprogram.\nReferences\n[1] Payal Bajaj, Daniel Campos, Nick Craswell, Li Deng, Jianfeng Gao, Xiaodong Liu, Rangan\nMajumder, Andrew McNamara, Bhaskar Mitra, Tri Nguyen, Mir Rosenberg, Xia Song, Alina",
+            "ers Library [66] and can be found at https://github.com/huggingface/transformers/blob/master/\nexamples/rag/. An interactive demo of RAG models can be found at https://huggingface.co/rag/\n2",
+            "the generation ﬂexibility of the “closed-book” (parametric only) approaches and the performance of\n\"open-book\" retrieval-based approaches. Unlike REALM and T5+SSM, RAG enjoys strong results\nwithout expensive, specialized “salient span masking” pre-training [ 20]. It is worth noting that RAG’s\nretriever is initialized using DPR’s retriever, which uses retrieval supervision on Natural Questions\nand TriviaQA. RAG compares favourably to the DPR QA system, which uses a BERT-based “cross-"
+        ],
+        "exact_match_score": 0,
+        "similarity_score": 0.5556,
+        "faithfulness_score": 0.4854,
+        "coverage_score": 0.5556,
+        "final_score": 0.3992
+    },
+    {
+        "question": "What model is used as the generator in RAG?",
+        "ground_truth": "BART-large.",
+        "prediction": "I could not find that information in the provided documents.",
+        "retrieved_chunks": [
+            "paper, as well as HuggingFace for their help in open-sourcing code to run RAG models. The authors\nwould also like to thank Kyunghyun Cho and Sewon Min for productive discussions and advice. EP\nthanks supports from the NSF Graduate Research Fellowship. PL is supported by the FAIR PhD\nprogram.\nReferences\n[1] Payal Bajaj, Daniel Campos, Nick Craswell, Li Deng, Jianfeng Gao, Xiaodong Liu, Rangan\nMajumder, Andrew McNamara, Bhaskar Mitra, Tri Nguyen, Mir Rosenberg, Xia Song, Alina",
+            "ers Library [66] and can be found at https://github.com/huggingface/transformers/blob/master/\nexamples/rag/. An interactive demo of RAG models can be found at https://huggingface.co/rag/\n2",
+            "Transformers [66]3, which achieves equivalent performance to the previous version but is a cleaner\nand easier to use implementation. This version is also open-sourced. We also compress the document\nindex using FAISS’s compression tools, reducing the CPU memory requirement to 36GB. Scripts to\nrun experiments with RAG can be found athttps://github.com/huggingface/transformers/\nblob/master/examples/rag/README.md and an interactive demo of a RAG model can be found\nat https://huggingface.co/rag/"
+        ],
+        "exact_match_score": 0,
+        "similarity_score": 0.0401,
+        "faithfulness_score": 0.0144,
+        "coverage_score": 0.0401,
+        "final_score": 0.0236
+    },
+    {
+        "question": "What serves as the non-parametric memory in RAG?",
+        "ground_truth": "A dense vector index of Wikipedia documents.",
+        "prediction": "The non-parametric memory index in RAG consists of 21M 728-dimensional vectors, consisting of 15.3B values.",
+        "retrieved_chunks": [
+            "with \"The Sun Also Rises\" is a novel by this author of \"A Farewell to Arms\". This example shows\nhow parametric and non-parametric memories work together—the non-parametric component helps\nto guide the generation, drawing out speciﬁc knowledge stored in the parametric memory.\n4.4 Fact Veriﬁcation\nTable 2 shows our results on FEVER. For 3-way classiﬁcation, RAG scores are within 4.3% of\nstate-of-the-art models, which are complex pipeline systems with domain-speciﬁc architectures and\nsubstantial engineering, trained using intermediate retrieval supervision, which RAG does not require.\n6",
+            "The non-parametric memory index does not consist of trainable parameters, but does consists of 21M\n728 dimensional vectors, consisting of 15.3B values. These can be easily be stored at 8-bit ﬂoating\npoint precision to manage memory and disk footprints.\nH Retrieval Collapse\nIn preliminary experiments, we observed that for some tasks such as story generation [ 11], the\nretrieval component would “collapse” and learn to retrieve the same documents regardless of the\ninput. In these cases, once retrieval had collapsed, the generator would learn to ignore the documents,\nand the RAG model would perform equivalently to BART. The collapse could be due to a less-explicit\nrequirement for factual knowledge in some tasks, or the longer target sequences, which could result\nin less informative gradients for the retriever. Perez et al.[46] also found spurious retrieval results\nwhen optimizing a retrieval component in order to improve performance on downstream tasks.\nI Number of instances per dataset",
+            "In this work, we presented hybrid generation models with access to parametric and non-parametric\nmemory. We showed that our RAG models obtain state of the art results on open-domain QA. We\nfound that people prefer RAG’s generation over purely parametric BART, ﬁnding RAG more factual\nand speciﬁc. We conducted an thorough investigation of the learned retrieval component, validating\nits effectiveness, and we illustrated how the retrieval index can be hot-swapped to update the model"
+        ],
+        "exact_match_score": 0,
+        "similarity_score": 0.3149,
+        "faithfulness_score": 0.5955,
+        "coverage_score": 0.3149,
+        "final_score": 0.3063
+    },
+    {
+        "question": "What serves as the parametric memory in RAG?",
+        "ground_truth": "The parameters of the BART sequence-to-sequence model.",
+        "prediction": "I could not find that information in the provided documents.",
+        "retrieved_chunks": [
+            "with \"The Sun Also Rises\" is a novel by this author of \"A Farewell to Arms\". This example shows\nhow parametric and non-parametric memories work together—the non-parametric component helps\nto guide the generation, drawing out speciﬁc knowledge stored in the parametric memory.\n4.4 Fact Veriﬁcation\nTable 2 shows our results on FEVER. For 3-way classiﬁcation, RAG scores are within 4.3% of\nstate-of-the-art models, which are complex pipeline systems with domain-speciﬁc architectures and\nsubstantial engineering, trained using intermediate retrieval supervision, which RAG does not require.\n6",
+            "The non-parametric memory index does not consist of trainable parameters, but does consists of 21M\n728 dimensional vectors, consisting of 15.3B values. These can be easily be stored at 8-bit ﬂoating\npoint precision to manage memory and disk footprints.\nH Retrieval Collapse\nIn preliminary experiments, we observed that for some tasks such as story generation [ 11], the\nretrieval component would “collapse” and learn to retrieve the same documents regardless of the\ninput. In these cases, once retrieval had collapsed, the generator would learn to ignore the documents,\nand the RAG model would perform equivalently to BART. The collapse could be due to a less-explicit\nrequirement for factual knowledge in some tasks, or the longer target sequences, which could result\nin less informative gradients for the retriever. Perez et al.[46] also found spurious retrieval results\nwhen optimizing a retrieval component in order to improve performance on downstream tasks.\nI Number of instances per dataset",
+            "more diverse than RAG-Token’s, and both are signiﬁcantly more diverse than BART without needing\nany diversity-promoting decoding.\nRetrieval Ablations A key feature of RAG is learning to retrieve relevant information for the task.\nTo assess the effectiveness of the retrieval mechanism, we run ablations where we freeze the retriever\nduring training. As shown in Table 6, learned retrieval improves results for all tasks."
+        ],
+        "exact_match_score": 0,
+        "similarity_score": 0.0925,
+        "faithfulness_score": 0.0605,
+        "coverage_score": 0.0925,
+        "final_score": 0.0614
+    },
+    {
+        "question": "What is the difference between RAG-Sequence and RAG-Token?",
+        "ground_truth": "RAG-Sequence uses the same retrieved document for the entire generated sequence, while RAG-Token can use different retrieved documents for different generated tokens.",
+        "prediction": "According to the provided context, RAG-Token performs better than RAG-Sequence on Jeopardy question generation, with both models outperforming BART on Q-BLEU-1. However, the exact difference between RAG-Sequence and RAG-Token is not explicitly stated in the provided context.",
+        "retrieved_chunks": [
+            "runtime. Figure 3 (left) shows that retrieving more documents at test time monotonically improves\nOpen-domain QA results for RAG-Sequence, but performance peaks for RAG-Token at 10 retrieved\ndocuments. Figure 3 (right) shows that retrieving more documents leads to higher Rouge-L for\nRAG-Token at the expense of Bleu-1, but the effect is less pronounced for RAG-Sequence.\n10 20 30 40 50\nKR e t r i e v e dD o c s\n39\n40\n41\n42\n43\n44NQ Exact Match RAG-Tok\nRAG-Seq\n10 20 30 40 50",
+            "BART generations (see §4.5).\n4.3 Jeopardy Question Generation\nTable 2 shows that RAG-Token performs better than RAG-Sequence on Jeopardy question generation,\nwith both models outperforming BART on Q-BLEU-1. 4 shows human evaluation results, over 452\npairs of generations from BART and RAG-Token. Evaluators indicated that BART was more factual\nthan RAG in only 7.1% of cases, while RAG was more factual in 42.7% of cases, and both RAG and\nBART were factual in a further 17% of cases, clearly demonstrating the effectiveness of RAG on\nthe task over a state-of-the-art generation model. Evaluators also ﬁnd RAG generations to be more\nspeciﬁc by a large margin. Table 3 shows typical generations from each model.\nJeopardy questions often contain two separate pieces of information, and RAG-Token may perform\nbest because it can generate responses that combine content from several documents. Figure 2 shows\nan example. When generating “Sun”, the posterior is high for document 2 which mentions “The",
+            "Open-domain QA results for RAG-Sequence, but performance peaks for RAG-Token at 10 retrieved\ndocuments. Figure 3 (right) shows that retrieving more documents leads to higher Rouge-L for\nRAG-Token at the expense of Bleu-1, but the effect is less pronounced for RAG-Sequence.\n10 20 30 40 50\nKR e t r i e v e dD o c s\n39\n40\n41\n42\n43\n44NQ Exact Match RAG-Tok\nRAG-Seq\n10 20 30 40 50\nKR e t r i e v e dD o c s\n40\n50\n60\n70\n80NQ Answer Recall @ K\nRAG-Tok\nRAG-Seq\nFixed DPR\nBM25\n10 20 30 40 50\nKR e t r i e v e dD o c s\n48\n50\n52\n54\n56Bleu-1 / Rouge-L score\nRAG-Tok R-L\nRAG-Tok B-1\nRAG-Seq R-L\nRAG-Seq B-1\nFigure 3: Left: NQ performance as more documents are retrieved. Center: Retrieval recall perfor-\nmance in NQ. Right: MS-MARCO Bleu-1 and Rouge-L as more documents are retrieved.\n5 Related Work\nSingle-Task Retrieval Prior work has shown that retrieval improves performance across a variety of\nNLP tasks when considered in isolation. Such tasks include open-domain question answering [5, 29],"
+        ],
+        "exact_match_score": 0,
+        "similarity_score": 0.6937,
+        "faithfulness_score": 0.7783,
+        "coverage_score": 0.6937,
+        "final_score": 0.5414
+    },
+    {
+        "question": "How does RAG retrieve relevant documents?",
+        "ground_truth": "It uses Dense Passage Retrieval and Maximum Inner Product Search (MIPS) over a dense Wikipedia index.",
+        "prediction": "I could not find that information in the provided documents.",
+        "retrieved_chunks": [
+            "runtime. Figure 3 (left) shows that retrieving more documents at test time monotonically improves\nOpen-domain QA results for RAG-Sequence, but performance peaks for RAG-Token at 10 retrieved\ndocuments. Figure 3 (right) shows that retrieving more documents leads to higher Rouge-L for\nRAG-Token at the expense of Bleu-1, but the effect is less pronounced for RAG-Sequence.\n10 20 30 40 50\nKR e t r i e v e dD o c s\n39\n40\n41\n42\n43\n44NQ Exact Match RAG-Tok\nRAG-Seq\n10 20 30 40 50",
+            "KR e t r i e v e dD o c s\n39\n40\n41\n42\n43\n44NQ Exact Match RAG-Tok\nRAG-Seq\n10 20 30 40 50\nKR e t r i e v e dD o c s\n40\n50\n60\n70\n80NQ Answer Recall @ K\nRAG-Tok\nRAG-Seq\nFixed DPR\nBM25\n10 20 30 40 50\nKR e t r i e v e dD o c s\n48\n50\n52\n54\n56Bleu-1 / Rouge-L score\nRAG-Tok R-L\nRAG-Tok B-1\nRAG-Seq R-L\nRAG-Seq B-1\nFigure 3: Left: NQ performance as more documents are retrieved. Center: Retrieval recall perfor-\nmance in NQ. Right: MS-MARCO Bleu-1 and Rouge-L as more documents are retrieved.\n5 Related Work",
+            "In preliminary experiments, we observed that for some tasks such as story generation [ 11], the\nretrieval component would “collapse” and learn to retrieve the same documents regardless of the\ninput. In these cases, once retrieval had collapsed, the generator would learn to ignore the documents,\nand the RAG model would perform equivalently to BART. The collapse could be due to a less-explicit\nrequirement for factual knowledge in some tasks, or the longer target sequences, which could result"
+        ],
+        "exact_match_score": 0,
+        "similarity_score": 0.1607,
+        "faithfulness_score": 0.1582,
+        "coverage_score": 0.1607,
+        "final_score": 0.1199
+    },
+    {
+        "question": "Why is the retrieved document treated as a latent variable?",
+        "ground_truth": "To allow end-to-end training by marginalizing over retrieved documents instead of requiring retrieval supervision.",
+        "prediction": "To train the retriever and generator end-to-end.",
+        "retrieved_chunks": [
+            "byθ that generates a current token based on a context of the previousi− 1 tokensy1:i−1, the original\ninputx and a retrieved passagez.\nTo train the retriever and generator end-to-end, we treat the retrieved document as a latent variable.\nWe propose two models that marginalize over the latent documents in different ways to produce a\ndistribution over generated text. In one approach, RAG-Sequence, the model uses the same document\nto predict each target token. The second approach, RAG-Token, can predict each target token based\non a different document. In the following, we formally introduce both models and then describe the\npη andpθ components, as well as the training and decoding procedure.\n2.1 Models\nRAG-Sequence Model The RAG-Sequence model uses the same retrieved document to generate\nthe complete sequence. Technically, it treats the retrieved document as a single latent variable that\nis marginalized to get the seq2seq probability p(y|x) via a top-K approximation. Concretely, the",
+            "architecture, by learning a retrieval module to augment pre-trained, generative language models.\nLearned Retrieval There is signiﬁcant work on learning to retrieve documents in information\nretrieval, more recently with pre-trained, neural language models [ 44, 26] similar to ours. Some\nwork optimizes the retrieval module to aid in a speciﬁc, downstream task such as question answering,\nusing search [46], reinforcement learning [6, 63, 62], or a latent variable approach [31, 20] as in our",
+            "This shows we can update RAG’s world knowledge by simply replacing its non-parametric memory.\nEffect of Retrieving more documents Models are trained with either 5 or 10 retrieved latent\ndocuments, and we do not observe signiﬁcant differences in performance between them. We have the\nﬂexibility to adjust the number of retrieved documents at test time, which can affect performance and\nruntime. Figure 3 (left) shows that retrieving more documents at test time monotonically improves"
+        ],
+        "exact_match_score": 0,
+        "similarity_score": 0.52,
+        "faithfulness_score": 0.3617,
+        "coverage_score": 0.52,
+        "final_score": 0.3504
+    },
+    {
+        "question": "Which Wikipedia dump was used to build the document index?",
+        "ground_truth": "The December 2018 Wikipedia dump.",
+        "prediction": "The December 2018 Wikipedia dump was used to build the document index.",
+        "retrieved_chunks": [
+            "search fromx,zi. This avoids the need to run additional forward passes once the candidate set Y has\nbeen generated. We refer to this decoding procedure as “Fast Decoding.”\n3 Experiments\nWe experiment with RAG in a wide range of knowledge-intensive tasks. For all experiments, we use\na single Wikipedia dump for our non-parametric knowledge source. Following Lee et al. [31] and\nKarpukhin et al. [26], we use the December 2018 dump. Each Wikipedia article is split into disjoint\n100-word chunks, to make a total of 21M documents. We use the document encoder to compute an\nembedding for each document, and build a single MIPS index using FAISS [23] with a Hierarchical\nNavigable Small World approximation for fast retrieval [37]. During training, we retrieve the top\nk documents for each query. We considerk∈{ 5, 10} for training and setk for test time using dev\ndata. We now discuss experimental details for each task.\n3.1 Open-domain Question Answering",
+            "Wikipedia dump from December 2016 and compare outputs from RAG using this index to the newer\nindex from our main results (December 2018). We prepare a list of 82 world leaders who had changed\n7",
+            "Transformers [66]3, which achieves equivalent performance to the previous version but is a cleaner\nand easier to use implementation. This version is also open-sourced. We also compress the document\nindex using FAISS’s compression tools, reducing the CPU memory requirement to 36GB. Scripts to\nrun experiments with RAG can be found athttps://github.com/huggingface/transformers/\nblob/master/examples/rag/README.md and an interactive demo of a RAG model can be found\nat https://huggingface.co/rag/"
+        ],
+        "exact_match_score": 0,
+        "similarity_score": 0.79,
+        "faithfulness_score": 0.5733,
+        "coverage_score": 0.79,
+        "final_score": 0.5383
+    },
+    {
+        "question": "How many Wikipedia document chunks were used in the index?",
+        "ground_truth": "Approximately 21 million document chunks.",
+        "prediction": "21M documents. Each document was split into disjoint 100-word chunks.",
+        "retrieved_chunks": [
+            "search fromx,zi. This avoids the need to run additional forward passes once the candidate set Y has\nbeen generated. We refer to this decoding procedure as “Fast Decoding.”\n3 Experiments\nWe experiment with RAG in a wide range of knowledge-intensive tasks. For all experiments, we use\na single Wikipedia dump for our non-parametric knowledge source. Following Lee et al. [31] and\nKarpukhin et al. [26], we use the December 2018 dump. Each Wikipedia article is split into disjoint\n100-word chunks, to make a total of 21M documents. We use the document encoder to compute an\nembedding for each document, and build a single MIPS index using FAISS [23] with a Hierarchical\nNavigable Small World approximation for fast retrieval [37]. During training, we retrieve the top\nk documents for each query. We considerk∈{ 5, 10} for training and setk for test time using dev\ndata. We now discuss experimental details for each task.\n3.1 Open-domain Question Answering",
+            "Wikipedia dump from December 2016 and compare outputs from RAG using this index to the newer\nindex from our main results (December 2018). We prepare a list of 82 world leaders who had changed\n7",
+            "p(z|x). Table 6 shows the results. For FEVER, BM25 performs best, perhaps since FEVER claims are\nheavily entity-centric and thus well-suited for word overlap-based retrieval. Differentiable retrieval\nimproves results on all other tasks, especially for Open-Domain QA, where it is crucial.\nIndex hot-swapping An advantage of non-parametric memory models like RAG is that knowledge\ncan be easily updated at test time. Parametric-only models like T5 or BART need further training to\nupdate their behavior as the world changes. To demonstrate, we build an index using the DrQA [5]\nWikipedia dump from December 2016 and compare outputs from RAG using this index to the newer\nindex from our main results (December 2018). We prepare a list of 82 world leaders who had changed\n7"
+        ],
+        "exact_match_score": 0,
+        "similarity_score": 0.8593,
+        "faithfulness_score": 0.4693,
+        "coverage_score": 0.8593,
+        "final_score": 0.547
+    },
+    {
+        "question": "How were Wikipedia articles split before indexing?",
+        "ground_truth": "Each article was split into disjoint 100-word chunks.",
+        "prediction": "Each Wikipedia article was split into disjoint 100-word chunks.",
+        "retrieved_chunks": [
+            "compehension purposes. We report our results using the datasets splits used in DPR [26], which are\nconsistent with common practice in Open-domain QA. For TriviaQA, this test dataset is the public\nTriviaQA Web Development split. Roberts et al.[52] used the TriviaQA ofﬁcial Wikipedia test set\ninstead. Févry et al. [14] follow this convention in order to compare with Roberts et al. [52] (See\nappendix of [14]). We report results on both test sets to enable fair comparison to both approaches.",
+            "search fromx,zi. This avoids the need to run additional forward passes once the candidate set Y has\nbeen generated. We refer to this decoding procedure as “Fast Decoding.”\n3 Experiments\nWe experiment with RAG in a wide range of knowledge-intensive tasks. For all experiments, we use\na single Wikipedia dump for our non-parametric knowledge source. Following Lee et al. [31] and\nKarpukhin et al. [26], we use the December 2018 dump. Each Wikipedia article is split into disjoint\n100-word chunks, to make a total of 21M documents. We use the document encoder to compute an\nembedding for each document, and build a single MIPS index using FAISS [23] with a Hierarchical\nNavigable Small World approximation for fast retrieval [37]. During training, we retrieve the top\nk documents for each query. We considerk∈{ 5, 10} for training and setk for test time using dev\ndata. We now discuss experimental details for each task.\n3.1 Open-domain Question Answering",
+            "p(z|x). Table 6 shows the results. For FEVER, BM25 performs best, perhaps since FEVER claims are\nheavily entity-centric and thus well-suited for word overlap-based retrieval. Differentiable retrieval\nimproves results on all other tasks, especially for Open-Domain QA, where it is crucial.\nIndex hot-swapping An advantage of non-parametric memory models like RAG is that knowledge\ncan be easily updated at test time. Parametric-only models like T5 or BART need further training to\nupdate their behavior as the world changes. To demonstrate, we build an index using the DrQA [5]\nWikipedia dump from December 2016 and compare outputs from RAG using this index to the newer\nindex from our main results (December 2018). We prepare a list of 82 world leaders who had changed\n7"
+        ],
+        "exact_match_score": 0,
+        "similarity_score": 0.9023,
+        "faithfulness_score": 0.6056,
+        "coverage_score": 0.9023,
+        "final_score": 0.6026
+    },
+    {
+        "question": "What optimization algorithm was used to train RAG?",
+        "ground_truth": "Adam optimizer.",
+        "prediction": "I could not find that information in the provided documents.",
+        "retrieved_chunks": [
+            "paper, as well as HuggingFace for their help in open-sourcing code to run RAG models. The authors\nwould also like to thank Kyunghyun Cho and Sewon Min for productive discussions and advice. EP\nthanks supports from the NSF Graduate Research Fellowship. PL is supported by the FAIR PhD\nprogram.\nReferences\n[1] Payal Bajaj, Daniel Campos, Nick Craswell, Li Deng, Jianfeng Gao, Xiaodong Liu, Rangan\nMajumder, Andrew McNamara, Bhaskar Mitra, Tri Nguyen, Mir Rosenberg, Xia Song, Alina",
+            "Transformers [66]3, which achieves equivalent performance to the previous version but is a cleaner\nand easier to use implementation. This version is also open-sourced. We also compress the document\nindex using FAISS’s compression tools, reducing the CPU memory requirement to 36GB. Scripts to\nrun experiments with RAG can be found athttps://github.com/huggingface/transformers/\nblob/master/examples/rag/README.md and an interactive demo of a RAG model can be found\nat https://huggingface.co/rag/",
+            "more diverse than RAG-Token’s, and both are signiﬁcantly more diverse than BART without needing\nany diversity-promoting decoding.\nRetrieval Ablations A key feature of RAG is learning to retrieve relevant information for the task.\nTo assess the effectiveness of the retrieval mechanism, we run ablations where we freeze the retriever\nduring training. As shown in Table 6, learned retrieval improves results for all tasks."
+        ],
+        "exact_match_score": 0,
+        "similarity_score": -0.0183,
+        "faithfulness_score": 0.0539,
+        "coverage_score": -0.0183,
+        "final_score": 0.0043
+    },
+    {
+        "question": "Which open-domain QA datasets were used to evaluate RAG?",
+        "ground_truth": "Natural Questions, TriviaQA, WebQuestions, and CuratedTrec.",
+        "prediction": "I could not find that information in the provided documents.",
+        "retrieved_chunks": [
+            "runtime. Figure 3 (left) shows that retrieving more documents at test time monotonically improves\nOpen-domain QA results for RAG-Sequence, but performance peaks for RAG-Token at 10 retrieved\ndocuments. Figure 3 (right) shows that retrieving more documents leads to higher Rouge-L for\nRAG-Token at the expense of Bleu-1, but the effect is less pronounced for RAG-Sequence.\n10 20 30 40 50\nKR e t r i e v e dD o c s\n39\n40\n41\n42\n43\n44NQ Exact Match RAG-Tok\nRAG-Seq\n10 20 30 40 50",
+            "tasks, RAG sets a new state of the art (only on the T5-comparable split for TQA). RAG combines\nthe generation ﬂexibility of the “closed-book” (parametric only) approaches and the performance of\n\"open-book\" retrieval-based approaches. Unlike REALM and T5+SSM, RAG enjoys strong results\nwithout expensive, specialized “salient span masking” pre-training [ 20]. It is worth noting that RAG’s\nretriever is initialized using DPR’s retriever, which uses retrieval supervision on Natural Questions\nand TriviaQA. RAG compares favourably to the DPR QA system, which uses a BERT-based “cross-\nencoder” to re-rank documents, along with an extractive reader. RAG demonstrates that neither a\nre-ranker nor extractive reader is necessary for state-of-the-art performance.\nThere are several advantages to generating answers even when it is possible to extract them. Docu-\nments with clues about the answer but do not contain the answer verbatim can still contribute towards",
+            "paper, as well as HuggingFace for their help in open-sourcing code to run RAG models. The authors\nwould also like to thank Kyunghyun Cho and Sewon Min for productive discussions and advice. EP\nthanks supports from the NSF Graduate Research Fellowship. PL is supported by the FAIR PhD\nprogram.\nReferences\n[1] Payal Bajaj, Daniel Campos, Nick Craswell, Li Deng, Jianfeng Gao, Xiaodong Liu, Rangan\nMajumder, Andrew McNamara, Bhaskar Mitra, Tri Nguyen, Mir Rosenberg, Xia Song, Alina"
+        ],
+        "exact_match_score": 0,
+        "similarity_score": 0.0804,
+        "faithfulness_score": 0.087,
+        "coverage_score": 0.0804,
+        "final_score": 0.0619
+    },
+    {
+        "question": "What Exact Match score did RAG-Sequence achieve on Natural Questions?",
+        "ground_truth": "44.5 Exact Match.",
+        "prediction": "I could not find that information in the provided documents.",
+        "retrieved_chunks": [
+            "As shown in Table 2, RAG-Sequence outperforms BART on Open MS-MARCO NLG by 2.6 Bleu\npoints and 2.6 Rouge-L points. RAG approaches state-of-the-art model performance, which is\nimpressive given that (i) those models access gold passages with speciﬁc information required to\ngenerate the reference answer , (ii) many questions are unanswerable without the gold passages, and\n(iii) not all questions are answerable from Wikipedia alone. Table 3 shows some generated answers",
+            "we did not ﬁnd beam search improved results. For Open-MSMarco and Jeopardy question generation,\nwe report test numbers using ten retrieved documents for both RAG-Token and RAG-Sequence,\nand we also train a BART-large model as a baseline. We use a beam size of four, and use the Fast\nDecoding approach for RAG-Sequence models, as Thorough Decoding did not improve performance.\nB Human Evaluation\nFigure 4: Annotation interface for human evaluation of factuality. A pop-out for detailed instructions",
+            "Table 2 shows that RAG-Token performs better than RAG-Sequence on Jeopardy question generation,\nwith both models outperforming BART on Q-BLEU-1. 4 shows human evaluation results, over 452\npairs of generations from BART and RAG-Token. Evaluators indicated that BART was more factual\nthan RAG in only 7.1% of cases, while RAG was more factual in 42.7% of cases, and both RAG and\nBART were factual in a further 17% of cases, clearly demonstrating the effectiveness of RAG on"
+        ],
+        "exact_match_score": 0,
+        "similarity_score": 0.1368,
+        "faithfulness_score": 0.0166,
+        "coverage_score": 0.1368,
+        "final_score": 0.0726
+    },
+    {
+        "question": "What Exact Match score did RAG-Sequence achieve on TriviaQA-Wiki?",
+        "ground_truth": "68.0 Exact Match.",
+        "prediction": "I could not find that information in the provided documents.",
+        "retrieved_chunks": [
+            "Table 2 shows that RAG-Token performs better than RAG-Sequence on Jeopardy question generation,\nwith both models outperforming BART on Q-BLEU-1. 4 shows human evaluation results, over 452\npairs of generations from BART and RAG-Token. Evaluators indicated that BART was more factual\nthan RAG in only 7.1% of cases, while RAG was more factual in 42.7% of cases, and both RAG and\nBART were factual in a further 17% of cases, clearly demonstrating the effectiveness of RAG on",
+            "we did not ﬁnd beam search improved results. For Open-MSMarco and Jeopardy question generation,\nwe report test numbers using ten retrieved documents for both RAG-Token and RAG-Sequence,\nand we also train a BART-large model as a baseline. We use a beam size of four, and use the Fast\nDecoding approach for RAG-Sequence models, as Thorough Decoding did not improve performance.\nB Human Evaluation\nFigure 4: Annotation interface for human evaluation of factuality. A pop-out for detailed instructions",
+            "As shown in Table 2, RAG-Sequence outperforms BART on Open MS-MARCO NLG by 2.6 Bleu\npoints and 2.6 Rouge-L points. RAG approaches state-of-the-art model performance, which is\nimpressive given that (i) those models access gold passages with speciﬁc information required to\ngenerate the reference answer , (ii) many questions are unanswerable without the gold passages, and\n(iii) not all questions are answerable from Wikipedia alone. Table 3 shows some generated answers"
+        ],
+        "exact_match_score": 0,
+        "similarity_score": 0.1412,
+        "faithfulness_score": 0.0047,
+        "coverage_score": 0.1412,
+        "final_score": 0.0718
+    },
+    {
+        "question": "What advantage does RAG have over purely parametric models like BART or T5?",
+        "ground_truth": "Its knowledge can be updated by replacing the retrieval index without retraining the model.",
+        "prediction": "RAG has the advantage of being able to generate responses that combine content from several documents, which may be particularly beneficial for tasks like Jeopardy questions that often contain two separate pieces of information.",
+        "retrieved_chunks": [
+            "paper, as well as HuggingFace for their help in open-sourcing code to run RAG models. The authors\nwould also like to thank Kyunghyun Cho and Sewon Min for productive discussions and advice. EP\nthanks supports from the NSF Graduate Research Fellowship. PL is supported by the FAIR PhD\nprogram.\nReferences\n[1] Payal Bajaj, Daniel Campos, Nick Craswell, Li Deng, Jianfeng Gao, Xiaodong Liu, Rangan\nMajumder, Andrew McNamara, Bhaskar Mitra, Tri Nguyen, Mir Rosenberg, Xia Song, Alina",
+            "BART were factual in a further 17% of cases, clearly demonstrating the effectiveness of RAG on\nthe task over a state-of-the-art generation model. Evaluators also ﬁnd RAG generations to be more\nspeciﬁc by a large margin. Table 3 shows typical generations from each model.\nJeopardy questions often contain two separate pieces of information, and RAG-Token may perform\nbest because it can generate responses that combine content from several documents. Figure 2 shows",
+            "As shown in Table 2, RAG-Sequence outperforms BART on Open MS-MARCO NLG by 2.6 Bleu\npoints and 2.6 Rouge-L points. RAG approaches state-of-the-art model performance, which is\nimpressive given that (i) those models access gold passages with speciﬁc information required to\ngenerate the reference answer , (ii) many questions are unanswerable without the gold passages, and\n(iii) not all questions are answerable from Wikipedia alone. Table 3 shows some generated answers"
+        ],
+        "exact_match_score": 0,
+        "similarity_score": 0.2755,
+        "faithfulness_score": 0.6187,
+        "coverage_score": 0.2755,
+        "final_score": 0.2924
+    },
+    {
+        "question": "What was demonstrated by the index hot-swapping experiment?",
+        "ground_truth": "RAG can update its world knowledge by replacing its non-parametric memory with a newer document index.",
+        "prediction": "An advantage of non-parametric memory models like RAG is that knowledge can be easily updated at test time. The index hot-swapping experiment demonstrated this by comparing outputs from RAG using an index from December 2016 to the newer index from December 2018.",
+        "retrieved_chunks": [
+            "improves results on all other tasks, especially for Open-Domain QA, where it is crucial.\nIndex hot-swapping An advantage of non-parametric memory models like RAG is that knowledge\ncan be easily updated at test time. Parametric-only models like T5 or BART need further training to\nupdate their behavior as the world changes. To demonstrate, we build an index using the DrQA [5]\nWikipedia dump from December 2016 and compare outputs from RAG using this index to the newer",
+            "p(z|x). Table 6 shows the results. For FEVER, BM25 performs best, perhaps since FEVER claims are\nheavily entity-centric and thus well-suited for word overlap-based retrieval. Differentiable retrieval\nimproves results on all other tasks, especially for Open-Domain QA, where it is crucial.\nIndex hot-swapping An advantage of non-parametric memory models like RAG is that knowledge\ncan be easily updated at test time. Parametric-only models like T5 or BART need further training to\nupdate their behavior as the world changes. To demonstrate, we build an index using the DrQA [5]\nWikipedia dump from December 2016 and compare outputs from RAG using this index to the newer\nindex from our main results (December 2018). We prepare a list of 82 world leaders who had changed\n7",
+            "runtime. Figure 3 (left) shows that retrieving more documents at test time monotonically improves\nOpen-domain QA results for RAG-Sequence, but performance peaks for RAG-Token at 10 retrieved\ndocuments. Figure 3 (right) shows that retrieving more documents leads to higher Rouge-L for\nRAG-Token at the expense of Bleu-1, but the effect is less pronounced for RAG-Sequence.\n10 20 30 40 50\nKR e t r i e v e dD o c s\n39\n40\n41\n42\n43\n44NQ Exact Match RAG-Tok\nRAG-Seq\n10 20 30 40 50"
+        ],
+        "exact_match_score": 0,
+        "similarity_score": 0.7011,
+        "faithfulness_score": 0.7602,
+        "coverage_score": 0.7011,
+        "final_score": 0.5406
+    },
+    {
+        "question": "How did human evaluators compare RAG and BART for Jeopardy question generation?",
+        "ground_truth": "RAG generations were judged to be more factual and more specific than BART generations.",
+        "prediction": "Human evaluators indicated that BART was more factual than RAG in only 7.1% of cases, while RAG was more factual in 42.7% of cases, and both RAG and BART were factual in a further 17% of cases.",
+        "retrieved_chunks": [
+            "Table 2 shows that RAG-Token performs better than RAG-Sequence on Jeopardy question generation,\nwith both models outperforming BART on Q-BLEU-1. 4 shows human evaluation results, over 452\npairs of generations from BART and RAG-Token. Evaluators indicated that BART was more factual\nthan RAG in only 7.1% of cases, while RAG was more factual in 42.7% of cases, and both RAG and\nBART were factual in a further 17% of cases, clearly demonstrating the effectiveness of RAG on",
+            "BART generations (see §4.5).\n4.3 Jeopardy Question Generation\nTable 2 shows that RAG-Token performs better than RAG-Sequence on Jeopardy question generation,\nwith both models outperforming BART on Q-BLEU-1. 4 shows human evaluation results, over 452\npairs of generations from BART and RAG-Token. Evaluators indicated that BART was more factual\nthan RAG in only 7.1% of cases, while RAG was more factual in 42.7% of cases, and both RAG and\nBART were factual in a further 17% of cases, clearly demonstrating the effectiveness of RAG on\nthe task over a state-of-the-art generation model. Evaluators also ﬁnd RAG generations to be more\nspeciﬁc by a large margin. Table 3 shows typical generations from each model.\nJeopardy questions often contain two separate pieces of information, and RAG-Token may perform\nbest because it can generate responses that combine content from several documents. Figure 2 shows\nan example. When generating “Sun”, the posterior is high for document 2 which mentions “The",
+            "3.3 Jeopardy Question Generation\nTo evaluate RAG’s generation abilities in a non-QA setting, we study open-domain question gen-\neration. Rather than use questions from standard open-domain QA tasks, which typically consist\nof short, simple questions, we propose the more demanding task of generating Jeopardy questions.\nJeopardy is an unusual format that consists of trying to guess an entity from a fact about that entity."
+        ],
+        "exact_match_score": 0,
+        "similarity_score": 0.678,
+        "faithfulness_score": 0.7436,
+        "coverage_score": 0.678,
+        "final_score": 0.5249
+    },
+    {
+        "question": "What was the key conclusion of the paper?",
+        "ground_truth": "Combining retrieval-based non-parametric memory with pre-trained generative models significantly improves performance on knowledge-intensive NLP tasks.",
+        "prediction": "I could not find that information in the provided documents.",
+        "retrieved_chunks": [
+            "https://www.aclweb.org/anthology/D19-1253.\n[68] Wanjun Zhong, Jingjing Xu, Duyu Tang, Zenan Xu, Nan Duan, Ming Zhou, Jiahai Wang, and\nJian Yin. Reasoning over semantic-level graph for fact checking. ArXiv, abs/1909.03745, 2019.\nURL https://arxiv.org/abs/1909.03745.\n16",
+            "Broader Impact\nThis work offers several positive societal beneﬁts over previous work: the fact that it is more\nstrongly grounded in real factual knowledge (in this case Wikipedia) makes it “hallucinate” less\nwith generations that are more factual, and offers more control and interpretability. RAG could be\nemployed in a wide variety of scenarios with direct beneﬁt to society, for example by endowing it",
+            "For 2-way classiﬁcation, we compare against Thorne and Vlachos [57], who train RoBERTa [35]\nto classify the claim as true or false given the gold evidence sentence. RAG achieves an accuracy\nwithin 2.7% of this model, despite being supplied with only the claim and retrieving its own evidence.\nWe also analyze whether documents retrieved by RAG correspond to documents annotated as gold\nevidence in FEVER. We calculate the overlap in article titles between the topk documents retrieved"
+        ],
+        "exact_match_score": 0,
+        "similarity_score": 0.0664,
+        "faithfulness_score": -0.0293,
+        "coverage_score": 0.0664,
+        "final_score": 0.0259
+    }
+]
