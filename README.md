@@ -165,14 +165,10 @@ Run Regression Analysis
 python -m evaluation.regression
 ```
 
-## Example Results
+## Project folder structure
+<img width="305" height="533" alt="image" src="https://github.com/user-attachments/assets/a6fac042-5eb5-495f-b0ae-f09c24eb0d4b" />  <img width="297" height="842" alt="image" src="https://github.com/user-attachments/assets/fdae45d5-85cf-484a-b288-984165be3b6f" />  <img width="308" height="856" alt="image" src="https://github.com/user-attachments/assets/afa9bd2d-0b80-42be-b78d-6bbec0d03058" />
 
-| Metric       | Score  |
-| ------------ | ------ |
-| Similarity   | 0.3997 |
-| Faithfulness | 0.3944 |
-| Coverage     | 0.3997 |
-| Final Score  | 0.2984 |
+
 
 
 ## Author
