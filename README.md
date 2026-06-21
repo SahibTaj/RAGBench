@@ -58,6 +58,10 @@ The platform enables systematic benchmarking of RAG pipelines by measuring retri
                  ▼
 ┌─────────────────────────────────┐
 │       Experiment Reports        │
+└────────────────┬────────────────┘
+                 ▼
+┌─────────────────────────────────┐
+│            Dashboard            │
 └─────────────────────────────────┘
 ```
 
@@ -228,6 +232,15 @@ Run Regression Analysis
 ```bash
 python -m evaluation.regression
 ```
+
+## Dashboard
+<img width="1913" height="671" alt="image" src="https://github.com/user-attachments/assets/5e919e76-5b7c-4405-a5fb-a012f48f4dbf" />
+<img width="1918" height="878" alt="image" src="https://github.com/user-attachments/assets/e47acf6a-092d-41bc-9e6b-5316473a9965" />
+<img width="1918" height="857" alt="image" src="https://github.com/user-attachments/assets/82cc160c-1205-4a6a-a9ae-b91ca989bd78" />
+<img width="1918" height="887" alt="image" src="https://github.com/user-attachments/assets/5227cf07-02c0-4f24-992a-3797837676b5" />
+
+
+
 
 ## Project folder structure
 <img width="305" height="533" alt="image" src="https://github.com/user-attachments/assets/a6fac042-5eb5-495f-b0ae-f09c24eb0d4b" />  
